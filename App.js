@@ -16,7 +16,7 @@ import dash from './assets/dash.png'
 function HomeScreen({ navigation }) {
 
 
-  const pages = ['Insert', 'Search','Delete', 'Student List']
+  const pages = ['Insert', 'Search','Delete', 'StudentList'];
 
   return (
     <View>
@@ -48,10 +48,11 @@ function HomeScreen({ navigation }) {
           fontFamily: 'sans-serif',
           fontWeight: 'bold'
         }}
-        onSelect = {(e)=> navigation.navigate('Insert',pages[0])}
-        onSelect = {(e)=> navigation.navigate('Search',pages[1])}
-        onSelect = {(e)=> navigation.navigate('Delete',pages[2])}
-        onSelect = {(e)=> navigation.navigate('StudentList',pages[3])}
+
+        onSelect = {(e)=> navigation.navigate(pages[e])}
+       
+      
+     
         >
 
          <Image 
