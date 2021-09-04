@@ -60,26 +60,30 @@ export default class StudentList extends Component {
                  
                 const styles = StyleSheet.create({
                  
-                container :{
-                justifyContent: 'center',
-                flex:1,
-                alignItems:'flex-start',
-                backgroundColor: '#F5FCFF',
-                margin: 20,
-                padding: 10,
-                top: 15
-                },
-                 welcome:{
-                   fontSize: 20,
-                   textAlign: 'center',
-                   margin:10  
-                 },
+                  container :{
+                    justifyContent: 'center',
+                    flex:1,
+                    alignItems:'center',
+                    backgroundColor: '#F5FCFF',
+                    margin: 10,
+                    padding: 10,
+                    top: 50,
+                    bottom: 50,
+                    },
+            
+                welcome:{
+                       fontSize: 20,
+                       textAlign: 'center',
+                       margin:10  
+                     },
+            
                 item:{
-                    padding: 5,
-                    borderBottomWidth:1,
-                    borderBottomColor: '#eee'
-                },
+                        padding: 5,
+                        borderBottomWidth:1,
+                        borderBottomColor: '#eee',
+                    },
+                    
                 text:{
-                    fontSize: 12
-                }
+                        fontSize: 20
+                    }
                 });

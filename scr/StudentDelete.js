@@ -93,7 +93,7 @@ componentDidMount = async() => {
      
     <TouchableOpacity onPress={() => alert(item.body)}>
         <View style={styles.item}>
-            <Text style={styles.text}>ID#:{item.StudentID}, Name:{item.student_name}, Course:{item.student_course}</Text>
+            <Text style={styles.text}>ID#:{item.StudentID},     Name:{item.student_name},       Course:{item.student_course}</Text>
         </View>
     </TouchableOpacity>
  );
@@ -147,7 +147,6 @@ const styles=StyleSheet.create({
 
     txtStyle:
     {
-
         borderBottomWidth:1,
         borderBottomColor:'red',
         marginBottom: 30,
@@ -157,24 +156,28 @@ const styles=StyleSheet.create({
     container :{
         justifyContent: 'center',
         flex:1,
-        alignItems:'flex-start',
+        alignItems:'center',
         backgroundColor: '#F5FCFF',
-        margin: 20,
-        padding: 10,
+        marginTop: 10,
+        paddingTop: 10,
         top: 5,
         },
-         welcome:{
+
+    welcome:{
            fontSize: 20,
            textAlign: 'center',
-           margin:10  
+           margin:5  
          },
-        item:{
+
+    item:{
             padding: 5,
             borderBottomWidth:1,
-            borderBottomColor: '#eee'
+            borderBottomColor: '#eee',
+            
         },
-        text:{
-            fontSize: 12
+
+    text:{
+            fontSize: 15
         }
 
 

@@ -1,7 +1,7 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Image, Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ModalDropdown from 'react-native-modal-dropdown';
@@ -10,31 +10,68 @@ import StudentInsert from './scr/StudentInsert.js';
 import StudentSearch from './scr/StudentSearch.js';
 import StudentDelete from './scr/StudentDelete.js';
 import StudentList from './scr/StudentList.js';
+import dash from './assets/dash.png'
 
 
 function HomeScreen({ navigation }) {
+
+
+  const pages = ['Insert', 'Search','Delete', 'Student List']
+
   return (
-    <View >
+    <View>
+      <View> 
+      <ModalDropdown 
+        style={{
+        top: 35,
+        width: 100,
+        right: 10,
+        position: 'relative',
+      }}
+        options={pages}
+        animated
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        dropdownStyle={{
+          height: 190,
+          width: 130,
+          marginBottom: 100,
+          marginLeft: 20,
+          marginTop: -80,
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+        }}
+
+        dropdownTextStyle={{
+          fontSize: 20,
+          fontStyle: "italic",
+          fontFamily: 'sans-serif',
+          fontWeight: 'bold'
+        }}
+        onSelect = {(e)=> navigation.navigate('Insert',pages[0])}
+        onSelect = {(e)=> navigation.navigate('Search',pages[1])}
+        onSelect = {(e)=> navigation.navigate('Delete',pages[2])}
+        onSelect = {(e)=> navigation.navigate('StudentList',pages[3])}
+        >
+
+         <Image 
+         source= {dash}
+         style={{ 
+         height: 80,
+         width: 80,
+         }}/>
+
+        </ModalDropdown>
+        </View>
 
       <Text style={{
         fontSize: 25,
         position: 'absolute',
         left: '26%',
-        top: 225
+        top: 300
       }}> HOMESCREEN </Text>
 
-      <ModalDropdown 
-        style={{
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: '#4f67ff',
-        borderWidth: 4,
-        width: 100,
-        top: 150,
-        left: '35%'}}
-        options={['option 1', 'option 2']}
-        defaultValue={"Dropdown"}
-        />
+     
  
       <View style={{ flexDirection: 'row', top: '80%', justifyContent: 'space-evenly'  }}>
 
@@ -68,7 +105,7 @@ function HomeScreen({ navigation }) {
 
 const Stack = createNativeStackNavigator();
 
-function App() {
+export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
@@ -119,4 +156,3 @@ function App() {
   );
 }
 
-export default App;
