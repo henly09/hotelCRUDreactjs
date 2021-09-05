@@ -8,8 +8,10 @@ import {
     FlatList, 
     ActivityIndicator, 
     TextInput,
-    Button
+    Button,
+    ImageBackground
 } from 'react-native';
+import school from '../assets/school.png';
 
 export default class StudentSearch extends Component {
 
@@ -72,11 +74,20 @@ export default class StudentSearch extends Component {
     render()
     {
     return (
-        <View   style={styles.viewStyle}>
+        <View>
+                <ImageBackground 
+                source={school} 
+                resizeMode="cover" 
+                style={{
+                height: '100%',
+                width: '100%'
+                }}>
+
+        <View style={styles.viewStyle}>
 
             <TextInput
                 placeholder={"Enter Student ID#"}
-                placeholderTextColor={"#ff0000"}
+                placeholderTextColor={"#000000"}
                 keyboardType={"numeric"}
                 style={styles.txtStyle}
                 onChangeText={StudentID=>this.setState({StudentID})}
@@ -86,32 +97,38 @@ export default class StudentSearch extends Component {
                 onPress={this.SearchRecord}
             />
 
+            <Text> </Text>
+            <Text> </Text>
+            <Text> </Text>
+
             <TextInput
             style={styles.txtStyle}
-            value={this.state.student_name}
+            value={"Name: "+this.state.student_name}
             />
 
             <TextInput
             style={styles.txtStyle}
-            value={this.state.student_year}
+            value={"Year: "+this.state.student_year}
             />
 
             <TextInput
             style={styles.txtStyle}
-            value={this.state.student_course}
+            value={"Course: "+this.state.student_course}
             />
 
             <TextInput
             style={styles.txtStyle}
-            value={this.state.student_age}
+            value={"Age: "+this.state.student_age}
             />
 
             <TextInput
             style={styles.txtStyle}
-            value={this.state.student_email}
+            value={"Email: "+this.state.student_email}
             />
 
 
+        </View>
+        </ImageBackground>
         </View>
     )
     }
@@ -124,17 +141,19 @@ const styles=StyleSheet.create({
         flex:1,
         padding:20,
         marginTop:20,
-        top: '25%'
+        top: '13%',
+        
     },
 
     txtStyle:
     {
-
         borderBottomWidth:1,
-        borderBottomColor:'red',
-        marginBottom: 30,
-
-    }
+        borderBottomColor:'#ffffff',
+        marginBottom: 5,
+        backgroundColor: 'white',
+        padding: 10
+    },
+   
 
 
 

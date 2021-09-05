@@ -1,7 +1,7 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text, Button, Image, Dimensions } from 'react-native';
+import { View, Text, Button, Image, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ModalDropdown from 'react-native-modal-dropdown';
@@ -10,7 +10,9 @@ import StudentInsert from './scr/StudentInsert.js';
 import StudentSearch from './scr/StudentSearch.js';
 import StudentDelete from './scr/StudentDelete.js';
 import StudentList from './scr/StudentList.js';
-import dash from './assets/dash.png'
+import dash from './assets/dash.png';
+import hcdclogo from './assets/hcdclogo.png';
+import school from './assets/school.png';
 
 
 function HomeScreen({ navigation }) {
@@ -20,7 +22,15 @@ function HomeScreen({ navigation }) {
 
   return (
     <View>
-      <View> 
+     <ImageBackground 
+     source={school} 
+     resizeMode="cover" 
+     style={{
+       height: '100%',
+       width: '100%'
+     }}>
+    
+    
       <ModalDropdown 
         style={{
         top: 35,
@@ -28,7 +38,7 @@ function HomeScreen({ navigation }) {
         right: 10,
         position: 'relative',
       }}
-        options={pages}
+        options={['Insert', 'Search','Delete', 'Student List']}
         animated
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
@@ -48,12 +58,7 @@ function HomeScreen({ navigation }) {
           fontFamily: 'sans-serif',
           fontWeight: 'bold'
         }}
-
-        onSelect = {(e)=> navigation.navigate(pages[e])}
-       
-      
-     
-        >
+        onSelect = {(e)=> navigation.navigate(pages[e])}>
 
          <Image 
          source= {dash}
@@ -63,18 +68,56 @@ function HomeScreen({ navigation }) {
          }}/>
 
         </ModalDropdown>
-        </View>
+
 
       <Text style={{
-        fontSize: 25,
+        fontSize: 35,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
         position: 'absolute',
-        left: '26%',
-        top: 300
-      }}> HOMESCREEN </Text>
+        alignSelf:'center',
+        top: 300,
+        color: 'white',
+        textShadowColor:'#0c0d0e',
+        textShadowOffset:{width: 10, height: 10},
+        textShadowRadius:20,
+        textAlign: 'center'
+      }}> HOLY CROSS OF {"\n"} DAVAO COLLEGE </Text>
+
+        <Text style={{
+        fontSize: 20,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
+        position: 'absolute',
+        alignSelf:'center',
+        top: 395,
+        color: 'white',
+        textShadowColor:'#0c0d0e',
+        textShadowOffset:{width: 10, height: 10},
+        textShadowRadius:20,
+        textAlign: 'center'
+      }}> Database Student Management™ </Text>
+
+        <Image 
+         source= {hcdclogo}
+         style={{ 
+         height: 180,
+         width: 180,
+         position: 'absolute',
+         alignSelf:'center',
+         top: 100,
+         resizeMode: 'center',
+         }}/>
 
      
  
-      <View style={{ flexDirection: 'row', top: '80%', justifyContent: 'space-evenly'  }}>
+      <View style={{ 
+        flexDirection: 'row', 
+        top: '100%', 
+        justifyContent: 'space-evenly',
+        }}>
 
       <Button
         title={"Insert"}
@@ -99,8 +142,8 @@ function HomeScreen({ navigation }) {
       />
 
       </View>
-
-    </View>
+      </ImageBackground>
+        </View>
   );
 }
 

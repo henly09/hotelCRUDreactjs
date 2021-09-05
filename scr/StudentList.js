@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
- 
-import { StyleSheet, FlatList, Text, View, ActivityIndicator, TouchableOpacity} from 'react-native';
+import school from '../assets/school.png';
+import { StyleSheet, FlatList, Text, View, ActivityIndicator, TouchableOpacity, ImageBackground} from 'react-native';
 
 export default class StudentList extends Component {
 
@@ -45,12 +45,51 @@ export default class StudentList extends Component {
             else {
      
             return (
+              <View>
+                <ImageBackground 
+                source={school} 
+                resizeMode="cover" 
+                style={{
+                height: '100%',
+                width: '100%'
+                }}>
+
+        <Text style={{
+        fontSize: 50,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
+        position: 'absolute',
+        top: 70,
+        left: 6.5,
+        color: 'white',
+        textShadowColor:'#0c0d0e',
+        textShadowOffset:{width: 10, height: 10},
+        textShadowRadius:20,
+      }}> STUDENT </Text>         
+
+        <Text style={{
+        fontSize: 30,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
+        position: 'absolute',
+        top: 120,
+        left: 10,
+        color: 'white',
+        textShadowColor:'#0c0d0e',
+        textShadowOffset:{width: 10, height: 10},
+        textShadowRadius:20,
+      }}> DATABASE </Text>
                 <View style={styles.container}>     
                        <FlatList
+                          style={{padding: 5}}
                           data={ this.state.dataSource }         
                           renderItem={this._renderItem}
                           keyExtractor={(item, index) => index.toString()}
                         />                
+                </View>
+                </ImageBackground>
                 </View>
                             
                     );
@@ -61,29 +100,24 @@ export default class StudentList extends Component {
                 const styles = StyleSheet.create({
                  
                   container :{
-                    justifyContent: 'center',
-                    flex:1,
                     alignItems:'center',
                     backgroundColor: '#F5FCFF',
-                    margin: 10,
-                    padding: 10,
-                    top: 50,
-                    bottom: 50,
+                    textAlign: 'center',
+                    top:180,
+                    height: '70%',
+                    width: '90%',
+                    left: '5%',
+                    padding: 20
+
                     },
-            
-                welcome:{
-                       fontSize: 20,
-                       textAlign: 'center',
-                       margin:10  
-                     },
-            
+                   
                 item:{
-                        padding: 5,
-                        borderBottomWidth:1,
-                        borderBottomColor: '#eee',
+                  paddingBottom: 10,
+                  borderBottomWidth:2,
+                  borderBottomColor: '#eee',
                     },
                     
                 text:{
-                        fontSize: 20
+                        fontSize: 15
                     }
                 });

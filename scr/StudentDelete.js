@@ -10,8 +10,9 @@ import {
     TouchableOpacity,
     StyleSheet,
     SafeAreaView,
-    ProgressViewIOSComponent
+    ImageBackground
 } from 'react-native';
+import school from '../assets/school.png';
 
 export default class StudentDelete extends Component {
 
@@ -27,17 +28,12 @@ export default class StudentDelete extends Component {
           }
     }
 
-    func_combined(){
-        this.DeleteRecord();
-        this.componentDidMount();
-    };
-
 /*------------------------------------------------------------------------------*/
     DeleteRecord=()=>
     {
         var StudentID=this.state.StudentID;
 
-        if(StudentID==0)
+        if(StudentID.length==0)
         {
             alert("Required Field is Missing");
         }
@@ -64,6 +60,7 @@ export default class StudentDelete extends Component {
                 .then((response)=>
                 {
                     alert(response[0].Message);
+                    this.componentDidMount();
                 })
                 .catch((error)=>
                 {
@@ -110,25 +107,36 @@ componentDidMount = async() => {
           }
           else{
     return (
+        <View>
+        <ImageBackground 
+                source={school} 
+                resizeMode="cover" 
+                style={{
+                height: '100%',
+                width: '100%'
+                }}>
         <View style={styles.viewStyle}>
             <TextInput
                 placeholder={"Enter Student ID#"}
-                placeholderTextColor={"#ff0000"}
+                placeholderTextColor={"#000000"}
                 keyboardType={"numeric"}
                 style={styles.txtStyle}
                 onChangeText={StudentID=>this.setState({StudentID})}
             />
             <Button
                 title={"Delete Record"}
-                onPress={() => this.func_combined()}
+                onPress={() => this.DeleteRecord()}
             />
             <SafeAreaView style={styles.container}>     
                    <FlatList
+                      style={{padding: 10}}
                       data={ this.state.dataSource }       
                       renderItem={this._renderItem}
                       keyExtractor={(item, index) => index.toString()}
                     />                
             </SafeAreaView>
+        </View>
+        </ImageBackground>
         </View>
     );
     }
@@ -139,41 +147,37 @@ const styles=StyleSheet.create({
 
     viewStyle:
     {
-        flex:1,
         padding:20,
-        marginTop:20,
-        top: '5%'
+        marginTop:100,
+        marginBottom: 130,
+        top: '2%',
     },
 
     txtStyle:
     {
         borderBottomWidth:1,
-        borderBottomColor:'red',
+        borderBottomColor:'black',
         marginBottom: 30,
-
+        backgroundColor: 'white',
+        padding: 10
     },
       
     container :{
-        justifyContent: 'center',
-        flex:1,
         alignItems:'center',
         backgroundColor: '#F5FCFF',
         marginTop: 10,
         paddingTop: 10,
         top: 5,
+        paddingBottom: 10,
+        textAlign: 'center',
+        height: 500,
+        width: '100%'
         },
 
-    welcome:{
-           fontSize: 20,
-           textAlign: 'center',
-           margin:5  
-         },
-
     item:{
-            padding: 5,
-            borderBottomWidth:1,
+            paddingBottom: 10,
+            borderBottomWidth:2,
             borderBottomColor: '#eee',
-            
         },
 
     text:{

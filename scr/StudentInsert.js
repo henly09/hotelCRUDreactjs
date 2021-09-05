@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Button, StyleSheet, ImageBackground } from 'react-native';
+import school from '../assets/school.png';
 
 export default class StudentInsert extends Component
 {
@@ -65,35 +66,44 @@ export default class StudentInsert extends Component
     
     {
         return(
+            <View>
+                <ImageBackground 
+                source={school} 
+                resizeMode="cover" 
+                style={{
+                height: '100%',
+                width: '100%'
+                }}>
             <View style={styles.ViewStyle}>
+                
                 <TextInput
                     placeholder={"Student Name"}
-                    placeholderTextColor={"#FF0000"}
+                    placeholderTextColor={"black"}
                     style={styles.txtStyle}
                     onChangeText={student_name=>this.setState({student_name})}
                 />
                  <TextInput
                     placeholder={"Student Year"}
-                    placeholderTextColor={"#FF0000"}
+                    placeholderTextColor={"black"}
                     style={styles.txtStyle}
                     onChangeText={student_year=>this.setState({student_year})}
                 />
                  <TextInput
                     placeholder={"Student's Course"}
-                    placeholderTextColor={"#FF0000"}
+                    placeholderTextColor={"black"}
                     style={styles.txtStyle}
                     onChangeText={student_course=>this.setState({student_course})}
                 />
                  <TextInput
                     placeholder={"Student Age"}
-                    placeholderTextColor={"#FF0000"}
+                    placeholderTextColor={"black"}
                     keyboardType={"numeric"}
                     style={styles.txtStyle}
                     onChangeText={student_age=>this.setState({student_age})}
                 />
                  <TextInput
                     placeholder={"Student's Email"}
-                    placeholderTextColor={"#FF0000"}
+                    placeholderTextColor={"black"}
                     style={styles.txtStyle}
                     onChangeText={student_email=>this.setState({student_email})}
                 />
@@ -102,7 +112,9 @@ export default class StudentInsert extends Component
                     title={"Save Record"}
                     onPress={this.InsertRecord}
                 />
-
+          
+            </View>
+            </ImageBackground>
             </View>
         )
     }
@@ -119,8 +131,10 @@ const styles=StyleSheet.create({
 
     txtStyle:{
         borderBottomWidth: 1,
-        borderBottomColor: 'red',
-        marginBottom: 20
+        borderBottomColor: 'black',
+        padding: 15,
+        marginBottom: 10,
+        backgroundColor: 'white',
     }
 
 
