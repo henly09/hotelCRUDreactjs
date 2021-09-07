@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import school from '../assets/school.png';
-import { StyleSheet, FlatList, Text, View, ActivityIndicator, TouchableOpacity, ImageBackground} from 'react-native';
-
+import { Image,StyleSheet, FlatList, Text, View, ActivityIndicator, TouchableOpacity, ImageBackground} from 'react-native';
+import hcdclogo from '../assets/hcdclogo.png';
+// Ownded and Created by : Montera, John Henly A.
+// FB: fb.com/mhax.ter
+// Gmail: monterahens@gmail.com 
 export default class StudentList extends Component {
 
     constructor()
@@ -53,6 +56,18 @@ export default class StudentList extends Component {
                 height: '100%',
                 width: '100%'
                 }}>
+
+          <Image 
+         source= {hcdclogo}
+         style={{ 
+         height: 100,
+         width: 100,
+         position: 'absolute',
+         alignSelf:'flex-end',
+         right: 40,
+         top: 65,
+         resizeMode: 'center',
+         }}/>
 
         <Text style={{
         fontSize: 50,

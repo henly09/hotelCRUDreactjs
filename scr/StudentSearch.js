@@ -4,15 +4,16 @@ import {
     StyleSheet, 
     Text,
     View, 
-    SafeAreaView, 
-    FlatList, 
-    ActivityIndicator, 
     TextInput,
     Button,
-    ImageBackground
+    ImageBackground,
+    Image
 } from 'react-native';
 import school from '../assets/school.png';
-
+import hcdclogo from '../assets/hcdclogo.png';
+// Ownded and Created by : Montera, John Henly A.
+// FB: fb.com/mhax.ter
+// Gmail: monterahens@gmail.com 
 export default class StudentSearch extends Component {
 
     constructor(props)
@@ -83,6 +84,18 @@ export default class StudentSearch extends Component {
                 width: '100%'
                 }}>
 
+         <Image 
+         source= {hcdclogo}
+         style={{ 
+         height: 180,
+         width: 180,
+         position: 'absolute',
+         alignSelf:'center',
+         top: 100,
+         resizeMode: 'center',
+         }}/>
+
+
         <View style={styles.viewStyle}>
 
             <TextInput
@@ -141,7 +154,7 @@ const styles=StyleSheet.create({
         flex:1,
         padding:20,
         marginTop:20,
-        top: '13%',
+        top: '35%',
         
     },
 

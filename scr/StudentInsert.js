@@ -1,8 +1,11 @@
 import React,{Component} from 'react';
-import { View, TextInput, Button, StyleSheet, ImageBackground } from 'react-native';
+import { View, TextInput, Button, StyleSheet, ImageBackground, Image } from 'react-native';
 import school from '../assets/school.png';
 import ModalDropdown from 'react-native-modal-dropdown';
-
+import hcdclogo from '../assets/hcdclogo.png';
+// Ownded and Created by : Montera, John Henly A.
+// FB: fb.com/mhax.ter
+// Gmail: monterahens@gmail.com 
 export default class StudentInsert extends Component
 {
     constructor(props)
@@ -180,6 +183,7 @@ export default class StudentInsert extends Component
     {
         return(
             <View>
+
                 <ImageBackground 
                 source={school} 
                 resizeMode="cover" 
@@ -187,6 +191,17 @@ export default class StudentInsert extends Component
                 height: '100%',
                 width: '100%'
                 }}>
+
+        <Image 
+         source= {hcdclogo}
+         style={{ 
+         height: 180,
+         width: 180,
+         position: 'absolute',
+         alignSelf:'center',
+         top: 100,
+         resizeMode: 'center',
+         }}/>
 
             <View style={styles.ViewStyle}>
                 
@@ -211,14 +226,15 @@ export default class StudentInsert extends Component
           width: '90%',
           marginTop: -45,
           marginLeft: -15,
+          paddingLeft: 5
         }}
         isFullWidth={true}
-        dropdownTextProps={{
-          fontSize: 20,
-          fontStyle: "italic",
-          fontFamily: 'sans-serif',
-          fontWeight: 'bold'
-        }}
+        dropdownTextStyle={{
+            fontSize: 15,
+            fontStyle: "italic",
+            fontFamily: 'sans-serif',
+            fontWeight: 'bold',
+          }}
         onSelect = {(student_year)=> this.setState({student_year})}/>
 
     <ModalDropdown 
@@ -266,14 +282,15 @@ export default class StudentInsert extends Component
           width: '90%',
           marginTop: -45,
           marginLeft: -15,
+          paddingLeft: 5
         }}
         isFullWidth={true}
-        dropdownTextProps={{
-          fontSize: 20,
-          fontStyle: "italic",
-          fontFamily: 'sans-serif',
-          fontWeight: 'bold'
-        }}
+        dropdownTextStyle={{
+            fontSize: 15,
+            fontStyle: "italic",
+            fontFamily: 'sans-serif',
+            fontWeight: 'bold',
+          }}
         onSelect = {(student_course)=> this.setState({student_course})}/>
 
                  <TextInput
@@ -308,7 +325,7 @@ const styles=StyleSheet.create({
         flex:1,
         padding: 20,
         marginTop:10,
-        top: '25%'
+        top: '35%'
     },
 
     txtStyle:{

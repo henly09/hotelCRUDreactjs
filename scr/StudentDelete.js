@@ -13,7 +13,9 @@ import {
     ImageBackground
 } from 'react-native';
 import school from '../assets/school.png';
-
+// Ownded and Created by : Montera, John Henly A.
+// FB: fb.com/mhax.ter
+// Gmail: monterahens@gmail.com 
 export default class StudentDelete extends Component {
 
     constructor(props)
@@ -115,6 +117,8 @@ componentDidMount = async() => {
                 height: '100%',
                 width: '100%'
                 }}>
+
+                    
         <View style={styles.viewStyle}>
             <TextInput
                 placeholder={"Enter Student ID#"}
@@ -150,7 +154,7 @@ const styles=StyleSheet.create({
         padding:20,
         marginTop:100,
         marginBottom: 130,
-        top: '2%',
+        top: '-4%',
     },
 
     txtStyle:
