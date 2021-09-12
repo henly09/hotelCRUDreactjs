@@ -12,17 +12,17 @@ import {
     SafeAreaView,
     ImageBackground
 } from 'react-native';
-import school from '../assets/school.png';
+import bg from '../assets/bg.jpg';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
-export default class StudentDelete extends Component {
+export default class HotelDelete extends Component {
 
     constructor(props)
     {
         super(props);
         this.state={
-            StudentID:''
+            customerID:''
         }
         this.state = { 
             isLoading: true,
@@ -33,22 +33,22 @@ export default class StudentDelete extends Component {
 /*------------------------------------------------------------------------------*/
     DeleteRecord=()=>
     {
-        var StudentID=this.state.StudentID;
+        var customerID=this.state.customerID;
 
-        if(StudentID.length==0)
+        if(customerID.length==0)
         {
             alert("Required Field is Missing");
         }
         else
         {
-            var InsertAPIURL = "http://10.0.2.2:80/Final_Proj/delete.php";
+            var InsertAPIURL = "http://10.0.2.2:80/Hotel/delete.php";
             var headers={
                 'Accept':'application/json',
                 'Content-Type':'application.json'
             };
 
             var Data={
-                StudentID:StudentID
+                customerID:customerID
             };
 
             fetch(InsertAPIURL,
@@ -76,7 +76,7 @@ export default class StudentDelete extends Component {
 componentDidMount = async() => {
     this.setState({ isLoading: true });
     try {  
-     const responseJson = await fetch('http://10.0.2.2:80/Final_Proj/displayall.php')
+     const responseJson = await fetch('http://10.0.2.2:80/Hotel/displayall.php')
      const json = await responseJson.json();
         this.setState({
           isLoading: false,
@@ -92,7 +92,7 @@ componentDidMount = async() => {
      
     <TouchableOpacity onPress={() => alert(item.body)}>
         <View style={styles.item}>
-            <Text style={styles.text}>ID#:{item.StudentID},     Name:{item.student_name},       Course:{item.student_course}</Text>
+            <Text style={styles.text}>ID#:{item.customerID}, Name:{item.fullname}, ReserveID:{item.reservID}</Text>
         </View>
     </TouchableOpacity>
  );
@@ -111,7 +111,7 @@ componentDidMount = async() => {
     return (
         <View>
         <ImageBackground 
-                source={school} 
+                source={bg} 
                 resizeMode="cover" 
                 style={{
                 height: '100%',
@@ -121,11 +121,11 @@ componentDidMount = async() => {
                     
         <View style={styles.viewStyle}>
             <TextInput
-                placeholder={"Enter Student ID#"}
+                placeholder={"Enter Customer ID#"}
                 placeholderTextColor={"#000000"}
                 keyboardType={"numeric"}
                 style={styles.txtStyle}
-                onChangeText={StudentID=>this.setState({StudentID})}
+                onChangeText={customerID=>this.setState({customerID})}
             />
             <Button
                 title={"Delete Record"}
@@ -153,8 +153,8 @@ const styles=StyleSheet.create({
     {
         padding:20,
         marginTop:100,
-        marginBottom: 130,
-        top: '-4%',
+        marginBottom: 10,
+        top: '-5%',
     },
 
     txtStyle:
@@ -185,7 +185,7 @@ const styles=StyleSheet.create({
         },
 
     text:{
-            fontSize: 15
+            fontSize: 14
         }
 
 

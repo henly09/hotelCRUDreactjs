@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import school from '../assets/school.png';
+import bg from '../assets/bg.jpg';
 import { Image,StyleSheet, FlatList, Text, View, ActivityIndicator, TouchableOpacity, ImageBackground} from 'react-native';
-import hcdclogo from '../assets/hcdclogo.png';
+import hotel from '../assets/hotel.png';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
-export default class StudentList extends Component {
+export default class HotelList extends Component {
 
     constructor()
     {
@@ -17,7 +17,7 @@ export default class StudentList extends Component {
     }
 
     componentDidMount() {
-        return fetch('http://10.0.2.2:80/Final_Proj/displayall.php')
+        return fetch('http://10.0.2.2:80/Hotel/displayall.php')
           .then((response) => response.json())
           .then((responseJson) => {
             this.setState({
@@ -31,7 +31,7 @@ export default class StudentList extends Component {
          
         <TouchableOpacity onPress={() => alert(item.body)}>
             <View style={styles.item}>
-                <Text style={styles.text}>ID#:{item.StudentID}, Name:{item.student_name}, Course:{item.student_course}</Text>
+                <Text style={styles.text}>ID#:{item.customerID}, Name:{item.fullname}, Reserve#:{item.reservID}</Text>
             </View>
         </TouchableOpacity>
      );
@@ -50,7 +50,7 @@ export default class StudentList extends Component {
             return (
               <View>
                 <ImageBackground 
-                source={school} 
+                source={bg} 
                 resizeMode="cover" 
                 style={{
                 height: '100%',
@@ -58,14 +58,14 @@ export default class StudentList extends Component {
                 }}>
 
           <Image 
-         source= {hcdclogo}
+         source= {hotel}
          style={{ 
-         height: 100,
-         width: 100,
+         height: 150,
+         width: 150,
          position: 'absolute',
          alignSelf:'flex-end',
-         right: 40,
-         top: 65,
+         right: 12,
+         top: 20,
          resizeMode: 'center',
          }}/>
 
@@ -75,30 +75,31 @@ export default class StudentList extends Component {
         fontWeight: 'bold',
         fontStyle: "italic",
         position: 'absolute',
-        top: 70,
-        left: 6.5,
-        color: 'white',
-        textShadowColor:'#0c0d0e',
-        textShadowOffset:{width: 10, height: 10},
-        textShadowRadius:20,
-      }}> STUDENT </Text>         
-
-        <Text style={{
-        fontSize: 30,
-        fontFamily: 'sans-serif',
-        fontWeight: 'bold',
-        fontStyle: "italic",
-        position: 'absolute',
-        top: 120,
+        top: 55,
         left: 10,
         color: 'white',
         textShadowColor:'#0c0d0e',
         textShadowOffset:{width: 10, height: 10},
         textShadowRadius:20,
-      }}> DATABASE </Text>
+      }}> HOTEL </Text>         
+
+        <Text style={{
+        fontSize: 18,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
+        position: 'absolute',
+        top: 110,
+        left: 20,
+        color: 'white',
+        textShadowColor:'#0c0d0e',
+        textShadowOffset:{width: 10, height: 10},
+        textShadowRadius:20,
+      }}> DATABASE MANAGEMENT™</Text>
+
+
                 <View style={styles.container}>     
                        <FlatList
-                          style={{padding: 5}}
                           data={ this.state.dataSource }         
                           renderItem={this._renderItem}
                           keyExtractor={(item, index) => index.toString()}
@@ -115,24 +116,25 @@ export default class StudentList extends Component {
                 const styles = StyleSheet.create({
                  
                   container :{
-                    alignItems:'center',
+                    alignItems:'flex-start',
                     backgroundColor: '#F5FCFF',
-                    textAlign: 'center',
-                    top:180,
+                    top:150,
                     height: '70%',
                     width: '90%',
                     left: '5%',
-                    padding: 20
+                    paddingLeft: 20,
+                    paddingTop: 10,
+                    paddingBottom: 10
 
                     },
                    
                 item:{
-                  paddingBottom: 10,
+                  paddingBottom: 5,
                   borderBottomWidth:2,
                   borderBottomColor: '#eee',
                     },
                     
                 text:{
-                        fontSize: 15
+                        fontSize: 14
                     }
                 });
