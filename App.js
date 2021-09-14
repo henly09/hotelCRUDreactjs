@@ -171,8 +171,8 @@ export default function App() {
         tabBarStyle: { 
           position: 'absolute',
           backgroundColor: '#630513',
-          borderTopLeftRadius: 15,
-          borderTopRightRadius: 15,
+          borderTopLeftRadius: 5,
+          borderTopRightRadius: 5,
           height: 60,
           width: "100%"
         },
