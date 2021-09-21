@@ -283,7 +283,7 @@ export default class HotelInsert extends Component
         date={this.state.date3}
         mode="date"
         placeholder="select date"
-        format="YYYY-MM-DD"
+        format="YYYY-DD-MM"
         minDate="1950-05-01"
         maxDate="2999-06-01"
         confirmBtnText="Confirm"
@@ -447,7 +447,7 @@ export default class HotelInsert extends Component
         date={this.state.date}
         mode="date"
         placeholder="select date"
-        format="YYYY-MM-DD"
+        format="YYYY-DD-MM"
         minDate="1950-05-01"
         maxDate="2999-06-01"
         confirmBtnText="Confirm"
@@ -476,7 +476,7 @@ export default class HotelInsert extends Component
         date={this.state.date2}
         mode="date"
         placeholder="select date"
-        format="YYYY-MM-DD"
+        format="YYYY-DD-MM"
         minDate="1950-05-01"
         maxDate="2999-06-01"
         confirmBtnText="Confirm"
