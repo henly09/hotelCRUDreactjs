@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import bg from '../assets/bg.jpg';
-import { Image,StyleSheet, FlatList, Text, View, ActivityIndicator, TouchableOpacity, ImageBackground} from 'react-native';
+import { Image,StyleSheet, FlatList,Button, Text, View, ActivityIndicator, TouchableOpacity, ImageBackground} from 'react-native';
 import hotel from '../assets/hotel.png';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
@@ -105,6 +105,20 @@ export default class HotelList extends Component {
                           keyExtractor={(item, index) => index.toString()}
                         />                
                 </View>
+  <View style={{
+  width: 100,
+  height: 50,
+  position: 'absolute',
+  top: 670,
+  left: 150,
+}}>
+      <Button
+        color="#630513"
+        title={"Refresh"}
+        onPress={() => this.componentDidMount()}
+      />
+      
+</View>
                 </ImageBackground>
                 </View>
                             
@@ -119,7 +133,7 @@ export default class HotelList extends Component {
                     alignItems:'flex-start',
                     backgroundColor: '#F5FCFF',
                     top:150,
-                    height: '70%',
+                    height: '65%',
                     width: '90%',
                     left: '5%',
                     paddingLeft: 20,

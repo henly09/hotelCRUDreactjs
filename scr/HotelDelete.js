@@ -35,7 +35,7 @@ export default class HotelDelete extends Component {
     {
         var customerID=this.state.customerID;
 
-        if(customerID.length==0)
+        if(customerID==null)
         {
             alert("Required Field is Missing");
         }
@@ -127,11 +127,7 @@ componentDidMount = async() => {
                 style={styles.txtStyle}
                 onChangeText={customerID=>this.setState({customerID})}
             />
-            <Button
-                color="#630513"
-                title={"Delete Record"}
-                onPress={() => this.DeleteRecord()}
-            />
+    
             <SafeAreaView style={styles.container}>     
                    <FlatList
                       style={{padding: 10}}
@@ -140,6 +136,19 @@ componentDidMount = async() => {
                       keyExtractor={(item, index) => index.toString()}
                     />                
             </SafeAreaView>
+    <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly', top: 19}}>
+
+            <Button
+                color="#630513"
+                title={"Delete Record"}
+                onPress={() => this.DeleteRecord()}
+            />
+             <Button
+                color="#630513"
+                title={"Refresh"}
+                onPress={() => this.componentDidMount()}
+            />
+    </View>
         </View>
         </ImageBackground>
         </View>
@@ -162,7 +171,7 @@ const styles=StyleSheet.create({
     {
         borderBottomWidth:1,
         borderBottomColor:'black',
-        marginBottom: 30,
+        marginBottom: 10,
         backgroundColor: 'white',
         padding: 10
     },
