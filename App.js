@@ -15,6 +15,8 @@ import HotelInsert from './scr/HotelInsert.js';
 import HotelSearch from './scr/HotelSearch.js';
 import HotelDelete from './scr/HotelDelete.js';
 import HotelList from './scr/HotelList.js';
+import HotelAbout from './scr/HotelAbout.js';
+
 import dash from './assets/dash.png';
 import hotel from './assets/hotel.png';
 import bg from './assets/bg.jpg';
@@ -23,12 +25,13 @@ import insert from './assets/insert.png';
 import search from './assets/search.png';
 import deleted from './assets/delete.png';
 import list from './assets/list.png';
+import about from './assets/about.png';
 
 
 function HomeScreen({ navigation }) {
 
 
-  const pages = ['Insert', 'Search','Delete', 'HotelList'];
+  const pages = ['Insert', 'Search','Delete', 'HotelList', 'HotelAbout'];
 
   return (
     <View>
@@ -47,7 +50,7 @@ function HomeScreen({ navigation }) {
         right: 10,
         position: 'relative',
       }}
-        options={['Insert', 'Search','Delete', 'Hotel List']}
+        options={['Insert', 'Search','Delete', 'Hotel List', 'About']}
         animated
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
@@ -59,13 +62,16 @@ function HomeScreen({ navigation }) {
           marginTop: -80,
           alignItems: 'center',
           justifyContent: 'flex-start',
+          backgroundColor: "#630513"
         }}
 
         dropdownTextStyle={{
           fontSize: 20,
           fontStyle: "italic",
           fontFamily: 'sans-serif',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          backgroundColor: "#630513",
+          color: 'white'
         }}
         onSelect = {(e)=> navigation.navigate(pages[e])}>
 
@@ -151,6 +157,12 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('HotelList')}
       />
 
+      <Button
+        color="#630513"
+        title={"About"}
+        onPress={() => navigation.navigate('HotelAbout')}
+      />
+
       </View>
       </ImageBackground>
         </View>
@@ -214,6 +226,24 @@ export default function App() {
             ),
         }}/>
 
+<Tab.Screen name="HotelAbout" component={HotelAbout}  options = {{
+            headerShown: false,
+            tabBarIcon: ({focused}) => (    
+              <View>
+                <Image
+                source={about}
+                resizeMode='contain'
+                style={{
+                  width:25,
+                  height:25,
+                }}
+                />
+              </View>
+            ),
+              
+        }}/>
+        
+
       <Tab.Screen name="Search" component={HotelSearch}  options = {{
             headerShown: false,
             tabBarIcon: ({focused}) => (
@@ -262,7 +292,8 @@ export default function App() {
             ),
               
         }}/>
-        
+
+
     </Tab.Navigator>
     </NavigationContainer>
     

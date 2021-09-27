@@ -199,7 +199,7 @@ export default class HotelSearch extends Component {
             > {"Reservation ID: "+this.state.reservID} </Text>
             <Text
             style={styles.txtStyle}
-            > {"Arrival: "+this.state.reservID} </Text>
+            > {"Arrival: "+this.state.arrival_date} </Text>
             <Text
             style={styles.txtStyle}
             > {"Departure: "+this.state.departure_date} </Text>
@@ -237,14 +237,14 @@ const styles=StyleSheet.create({
         borderBottomColor: 'black',
         width: 100,
         marginBottom: 10,
-        backgroundColor: '#2494f4',
+        backgroundColor: '#6c0c1c',
         fontSize: 14.5,
         height: 38,
         textAlign: 'center',
         paddingTop: 8,
         color: 'white',
         fontWeight: 'bold',
-        borderRadius: 3    
+        borderRadius: 3
     },
    
 

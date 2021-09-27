@@ -2,51 +2,115 @@ import React,{Component,useState} from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ImageBackground, Image, render } from 'react-native';
 import bg from '../assets/bg.jpg';
 import ModalDropdown from 'react-native-modal-dropdown';
-import DatePicker from 'react-native-datepicker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
 
-export default class HotelInsert extends Component
+export default function HotelInsert()
 {
-    constructor(props)
-    {
-        super(props);
-        this.state={
-            fullname:'',
-            Type_:'',
-            sex:'',
-            date_of_birth:'',
-            phone_num:'',
-            email:'',
-            address:'',
-            room_num:'',
-            room_type:'',
-            no_of_occupants:'',
-            reservID:'',
-            arrival_date:'',
-            departure_date:'',
-            random: 0,
-            date:'',
-            date2:'',
-            date3:''
-        };
+ //---------------------------------------------------------- BirthDate   
+    const [date, setDate] = useState(new Date());
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+    const [textdate1, setTextdate1] = useState('yyyy-dd-mm');
 
-    }
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+  
+        let tempDate = new Date(currentDate);
+        let fDate = tempDate.getFullYear() + '-' + tempDate.getDate() + '-' + (tempDate.getMonth()+1);
+        setDate_of_birth(fDate);
+        setTextdate1(fDate)
 
-    min = 100000;
-    max = 999999;
+        console.log('BirthDate:'+ fDate);
+      }
+  
+      const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+      }
+//---------------------------------------------------------- Arrival Date
 
-    handleClick = () => {
-        this.setState({random: this.min + (Math.random() * (this.max - this.min))});
+const [date2, setDate2] = useState(new Date());
+const [mode2, setMode2] = useState('date');
+const [show2, setShow2] = useState(false);
+const [textdate2, setTextdate2] = useState('yyyy-dd-mm');
+
+const onChange2 = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow2(Platform.OS === 'ios');
+    setDate2(currentDate);
+
+    let tempDate2 = new Date(currentDate);
+    let fDate2 = tempDate2.getFullYear() + '-' + tempDate2.getDate() + '-' + (tempDate2.getMonth()+1);
+    setArrival_date(fDate2);
+    setTextdate2(fDate2)
+
+    console.log('Arrival:'+ fDate2);
+  }
+
+  const showMode2 = (currentMode) => {
+    setShow2(true);
+    setMode2(currentMode);
+  }
+//---------------------------------------------------------- Departure Date
+const [date3, setDate3] = useState(new Date());
+const [mode3, setMode3] = useState('date');
+const [show3, setShow3] = useState(false);
+const [textdate3, setTextdate3] = useState('yyyy-dd-mm');
+
+const onChange3 = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow3(Platform.OS === 'ios');
+    setDate3(currentDate);
+
+    let tempDate3 = new Date(currentDate);
+    let fDate3 = tempDate3.getFullYear() + '-' + tempDate3.getDate() + '-' + (tempDate3.getMonth()+1);
+    setDeparture_date(fDate3);
+    setTextdate3(fDate3)
+
+    console.log('Departure:'+ fDate3);
+  }
+
+  const showMode3 = (currentMode) => {
+    setShow3(true);
+    setMode3(currentMode);
+  }
+  //----------------------------------------------------------
+
+
+    const [fullname1, setFullname] = useState('');
+    const [Type_1, setType_] = useState('');
+    const [sex1, setSex] = useState('');
+    const [date_of_birth1, setDate_of_birth] = useState('');
+    const [phone_num1, setPhone_num] = useState('');
+    const [email1, setEmail] = useState('');
+    const [address1, setAddress] = useState('');
+    const [room_floor1, setRoom_floor] = useState();
+    const [room_no1, setRoom_no] = useState('');
+    const [room_type1, setRoom_type] = useState('');
+    const [no_of_occupants1, setNo_of_occupants] = useState('');
+    const [reservID1, setReservID] = useState(0);
+    const [arrival_date1, setArrival_date] = useState('');
+    const [departure_date1, setDeparture_date] = useState('');
+
+    const [min, setMin] = useState(100000);
+    const [max, setMax] = useState(999999);
+
+    const handleClick = () => {
+        setReservID(Math.floor(Math.random() * max) + min );
+        console.log(reservID1);
       };
    
 
-    InsertRecord=()=>
+    const InsertRecord=()=>
     {
-        var fullname=this.state.fullname;
-        var Type_=this.state.Type_;
+        var fullname=fullname1;
+        var Type_=Type_1;
 
         if (Type_ == 0){
             Type_ = "Walk-In"
@@ -55,7 +119,7 @@ export default class HotelInsert extends Component
             Type_ = "Reservation"
         }
 
-        var sex=this.state.sex;
+        var sex=sex1;
 
         if (sex == 0){
             sex = "Male"
@@ -67,12 +131,12 @@ export default class HotelInsert extends Component
             sex = "Others.."
         }
 
-        var date_of_birth=this.state.date3;
-        var phone_num=this.state.phone_num;
-        var email=this.state.email;
-        var address=this.state.address;
+        var date_of_birth=date_of_birth1;
+        var phone_num=phone_num1;
+        var email=email1;
+        var address=address1;
 
-        var room_floor = this.state.room_floor;
+        var room_floor = room_floor1;
         var count1 = 0;
         var count2 = 0;
         var a;
@@ -97,7 +161,7 @@ export default class HotelInsert extends Component
                 }  
         }
 
-        var room_no = this.state.room_no;
+        var room_no = room_no1;
 
         while (room_no+1 != count2){
             count2++;
@@ -108,7 +172,7 @@ export default class HotelInsert extends Component
         }
 
         var room_num=room_floor+" "+room_no;
-        var room_type=this.state.room_type;
+        var room_type=room_type1;
 
         if (room_type == 0){
             room_type = "Single: A room assigned to one person."
@@ -132,14 +196,14 @@ export default class HotelInsert extends Component
             room_type = "Twin: A room with two beds."
         }
 
-        var no_of_occupants=this.state.no_of_occupants;
+        var no_of_occupants=no_of_occupants1;
 
 
-        var reservID=this.state.random;
+        var reservID=reservID1;
 
 
-        var arrival_date=this.state.date;
-        var departure_date=this.state.date2;
+        var arrival_date=arrival_date1;
+        var departure_date=departure_date1;
 
         if(
         fullname.length == 0 || 
@@ -200,10 +264,6 @@ export default class HotelInsert extends Component
                 })
         }
     }
-
-    render()
-    
-    {
        
         return(
 
@@ -223,7 +283,7 @@ export default class HotelInsert extends Component
                     placeholder={"Fullname"}
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
-                    onChangeText={fullname=>this.setState({fullname})}
+                    onChangeText={fullname=>setFullname(fullname)}
                 />
 
     <ModalDropdown 
@@ -249,7 +309,7 @@ export default class HotelInsert extends Component
             fontFamily: 'sans-serif',
             fontWeight: 'bold',
           }}
-        onSelect = {(Type_)=> this.setState({Type_})}/>
+        onSelect = {(Type_)=> setType_(Type_)}/>
 
     <ModalDropdown 
         style={styles.txtStyle}
@@ -274,54 +334,45 @@ export default class HotelInsert extends Component
             fontFamily: 'sans-serif',
             fontWeight: 'bold',
           }}
-        onSelect = {(sex)=> this.setState({sex})}/>
+        onSelect = {(sex)=> setSex(sex)}/>
+
 
 <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly'}}>
-  <Text style={styles.txtStyle5}> Birthday: </Text> 
-  <DatePicker
-        style={styles.txtStyle4}
-        date={this.state.date3}
-        mode="date"
-        placeholder="select date"
-        format="YYYY-DD-MM"
-        minDate="1950-05-01"
-        maxDate="2999-06-01"
-        confirmBtnText="Confirm"
-        cancelBtnText="Cancel"
-        customStyles={{
-          dateIcon: {
-            position: 'absolute',
-            left: 0,
-            top: 4,
-            marginLeft: 0
-          },
-          dateInput: {
-            marginLeft: 36
-          }
-          // ... You can check the source to find the other keys.
-        }}
-        onDateChange={(date3) => {this.setState({date3: date3})}}
-        
-      />
+      <View style={styles.txtStyle4}>
+          <Button color="#6c0c1c" title='Date of Birth' onPress={() => showMode('date')}/>
+      </View>
+      {show && (
+        <DateTimePicker
+        testID = 'dateTimePicker'
+        value={date}
+        mode={mode}
+        is24Hour={false}
+        display='default'
+        onChange={onChange}
+        />
+      )}
+    <Text style={styles.txtStyle5}> {textdate1} </Text> 
 </View>
+
+
                 <TextInput
                     placeholder={"Phone Number"}
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
                     keyboardType = 'numeric'
-                    onChangeText={phone_num=>this.setState({phone_num})}
+                    onChangeText={phone_num=>setPhone_num(phone_num)}
                 />
                 <TextInput
                     placeholder={"Email"}
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
-                    onChangeText={email=>this.setState({email})}
+                    onChangeText={email=>setEmail(email)}
                 />
                 <TextInput
                     placeholder={"Address"}
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
-                    onChangeText={address=>this.setState({address})}
+                    onChangeText={address=>setAddress(address)}
                 />
 <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly'}}>
 
@@ -348,7 +399,7 @@ export default class HotelInsert extends Component
             fontFamily: 'sans-serif',
             fontWeight: 'bold',
           }}
-        onSelect = {(room_floor)=> this.setState({room_floor})}/>
+        onSelect = {(room_floor)=> setRoom_floor(room_floor)}/>
 
 <ModalDropdown 
         style={styles.txtStyle2}
@@ -383,7 +434,7 @@ export default class HotelInsert extends Component
             fontFamily: 'sans-serif',
             fontWeight: 'bold',
           }}
-        onSelect = {(room_no)=> this.setState({room_no})}/>
+        onSelect = {(room_no)=> setRoom_no(room_no)}/>
 </View>
 
 <ModalDropdown 
@@ -416,91 +467,68 @@ export default class HotelInsert extends Component
             fontFamily: 'sans-serif',
             fontWeight: 'bold',
           }}
-        onSelect = {(room_type)=> this.setState({room_type})}/>
+        onSelect = {(room_type)=> setRoom_type(room_type)}/>
 
                 <TextInput
                     placeholder={"No. of Occupants"}
                     placeholderTextColor={"black"}
                     style={styles.txtStyle}
                     keyboardType={'numeric'}
-                    onChangeText={no_of_occupants=>this.setState({no_of_occupants})}
+                    onChangeText={no_of_occupants=>setNo_of_occupants(no_of_occupants)}
                 />
  <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly'}}>
   
                 <TextInput
-                    value={''+parseInt(this.state.random)}
+                    value={''+parseInt(reservID1)}
                     placeholderTextColor={"black"}
                     style={styles.txtStyle3}
                     keyboardType={'numeric'}
                     editable={false} 
                 /> 
     <TouchableOpacity
-                    onPress={this.handleClick}>
+                    onPress={handleClick}>
                     <Text style={styles.randombutton}>RANDOM NO.</Text>
     </TouchableOpacity>
   </View>
 
   <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly'}}>
-  <Text style={styles.txtStyle5}> Date of Arrival: </Text> 
-  <DatePicker
-        style={styles.txtStyle4}
-        date={this.state.date}
-        mode="date"
-        placeholder="select date"
-        format="YYYY-DD-MM"
-        minDate="1950-05-01"
-        maxDate="2999-06-01"
-        confirmBtnText="Confirm"
-        cancelBtnText="Cancel"
-        customStyles={{
-          dateIcon: {
-            position: 'absolute',
-            left: 0,
-            top: 4,
-            marginLeft: 0
-          },
-          dateInput: {
-            marginLeft: 36
-          }
-          // ... You can check the source to find the other keys.
-        }}
-        onDateChange={(date) => {this.setState({date: date})}}
-        useNativeDriver= {true}
-      />
+      <View style={styles.txtStyle4}>
+          <Button color="#6c0c1c" title='Date Of Arrival' onPress={() => showMode2('date')}/>
+      </View>
+      {show2 && (
+        <DateTimePicker
+        testID = 'dateTimePicker'
+        value={date2}
+        mode={mode2}
+        is24Hour={false}
+        display='default'
+        onChange={onChange2}
+        />
+      )}
+    <Text style={styles.txtStyle5}> {textdate2} </Text> 
 </View>
                 
 <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly'}}>
-  <Text style={styles.txtStyle5}> Date of Departure: </Text> 
-  <DatePicker
-        style={styles.txtStyle4}
-        date={this.state.date2}
-        mode="date"
-        placeholder="select date"
-        format="YYYY-DD-MM"
-        minDate="1950-05-01"
-        maxDate="2999-06-01"
-        confirmBtnText="Confirm"
-        cancelBtnText="Cancel"
-        customStyles={{
-          dateIcon: {
-            position: 'absolute',
-            left: 0,
-            top: 4,
-            marginLeft: 0
-          },
-          dateInput: {
-            marginLeft: 36
-          }
-          // ... You can check the source to find the other keys.
-        }}
-        onDateChange={(date2) => {this.setState({date2: date2})}}
-        useNativeDriver= {true}
-      />
+      <View style={styles.txtStyle4}>
+          <Button color="#6c0c1c" title='Date Of Departure' onPress={() => showMode3('date')}/>
+      </View>
+      {show3 && (
+        <DateTimePicker
+        testID = 'dateTimePicker'
+        value={date3}
+        mode={mode3}
+        is24Hour={false}
+        display='default'
+        onChange={onChange3}
+        />
+      )}
+    <Text style={styles.txtStyle5}> {textdate3} </Text> 
 </View>
 
                 <Button
+                    color = '#6c0c1c'
                     title={"Save Record"}
-                    onPress={this.InsertRecord}
+                    onPress={InsertRecord}
                 />
 
             </View>
@@ -508,7 +536,6 @@ export default class HotelInsert extends Component
             </View>
         )
     }
-}
 
 const styles=StyleSheet.create({
 
@@ -539,7 +566,7 @@ const styles=StyleSheet.create({
         borderBottomColor: 'black',
         width: 100,
         marginBottom: 10,
-        backgroundColor: '#2494f4',
+        backgroundColor: '#6c0c1c',
         fontSize: 14.5,
         height: 38,
         textAlign: 'center',
@@ -560,11 +587,7 @@ const styles=StyleSheet.create({
     txtStyle4:{
         borderBottomWidth: 1,
         borderBottomColor: 'black',
-        marginBottom: 10,
-        padding: 0,
-        width: '59%',
-        backgroundColor: 'white',
-        
+        width: '50%',
     },
 
     txtStyle5:{

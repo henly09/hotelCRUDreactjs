@@ -128,6 +128,7 @@ componentDidMount = async() => {
                 onChangeText={customerID=>this.setState({customerID})}
             />
             <Button
+                color="#630513"
                 title={"Delete Record"}
                 onPress={() => this.DeleteRecord()}
             />
