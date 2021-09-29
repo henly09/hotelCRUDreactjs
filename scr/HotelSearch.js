@@ -41,7 +41,7 @@ export default class HotelSearch extends Component {
     {
         var customerID=this.state.customerID;
 
-        if(customerID.length==0)
+        if(customerID== null)
         {
             alert("Required Field is Missing");
         }
@@ -160,10 +160,7 @@ export default class HotelSearch extends Component {
                     onPress={this.SearchRecord}>
                     <Text style={styles.randombutton}>SEARCH</Text>
     </TouchableOpacity>
-        </View>
-
-            <Text> </Text>
-           
+        </View>           
             <Text
             style={styles.txtStyle}
             > {"Name: "+this.state.fullname} </Text> 
