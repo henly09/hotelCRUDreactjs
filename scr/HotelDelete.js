@@ -10,9 +10,17 @@ import {
     TouchableOpacity,
     StyleSheet,
     SafeAreaView,
-    ImageBackground
+    ImageBackground,
+    Image
 } from 'react-native';
 import bg from '../assets/bg.jpg';
+import single from '../assets/thumbnail/single.png';
+import double from '../assets/thumbnail/double.png';
+import triple from '../assets/thumbnail/triple.png';
+import quad from '../assets/thumbnail/quad.jpg';
+import queen from '../assets/thumbnail/queen.png';
+import king from '../assets/thumbnail/king.png';
+import twin from '../assets/thumbnail/twin.png';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
@@ -88,14 +96,40 @@ componentDidMount = async() => {
     }
   }
 
- _renderItem = ({ item }) => (
-     
+  _renderItem = ({ item }) => {
+       
+    thumbnail = item.room_type;
+   
+    const rooms = [
+     single,
+     double,
+     triple,
+     quad,
+     queen,
+     king,
+     twin];
+   
+   var e;
+   var thumbnail;
+   
+   if ( thumbnail == 'Single'){e=0;}
+   if ( thumbnail == 'Double'){e=1;}
+   if ( thumbnail == 'Triple'){e=2;}
+   if ( thumbnail == 'Quad'){e=3;}
+   if ( thumbnail == 'Queen'){e=4;}
+   if ( thumbnail == 'King'){e=5;}
+   if ( thumbnail == 'Twin'){e=6;}
+
+    return (
     <TouchableOpacity onPress={() => alert(item.body)}>
-        <View style={styles.item}>
-            <Text style={styles.text}>ID#:{item.customerID}, Name:{item.fullname}, ReserveID:{item.reservID}</Text>
-        </View>
-    </TouchableOpacity>
- );
+          <View>
+          <View style={styles.item}>
+              <Text style={styles.text}>ID#:{item.customerID}, Name:{item.fullname},{"\n"}Reserve#:{item.reservID},{"\n"}Type:{item.room_type}</Text>
+          </View>
+          <Image style= {styles.thumbnail}source={rooms[e]}/>
+          </View>
+      </TouchableOpacity>
+   );}
 
 /*------------------------------------------------------------------------------*/
     render()
@@ -130,7 +164,7 @@ componentDidMount = async() => {
     
             <SafeAreaView style={styles.container}>     
                    <FlatList
-                      style={{padding: 10}}
+                      style={{padding: 10, width: '100%'}}
                       data={ this.state.dataSource }       
                       renderItem={this._renderItem}
                       keyExtractor={(item, index) => index.toString()}
@@ -189,17 +223,28 @@ const styles=StyleSheet.create({
         },
 
     item:{
-            paddingBottom: 10,
-            borderBottomWidth:2,
-            borderBottomColor: '#eee',
+        borderBottomWidth:3,
+        borderBottomColor: '#eee',
+        width: '100%',
+        padding :10,
+        left: 50
         },
 
     text:{
-            fontSize: 14,
-            fontFamily: 'sans-serif',
-            fontWeight: 'bold',
-            fontStyle: "italic",
-        }
+        fontSize: 15,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
+        },
+        
+    thumbnail:{
+        resizeMode: 'center',
+        position: 'absolute',
+        height: 50, 
+        width: 50, 
+        top: 20,
+        backgroundColor:'#630513'
+    }
 
 
 

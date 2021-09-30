@@ -99,7 +99,7 @@ const onChange3 = (event, selectedDate) => {
     const [departure_date1, setDeparture_date] = useState('');
 
     const [min, setMin] = useState(100000);
-    const [max, setMax] = useState(999999);
+    const [max, setMax] = useState(900000);
 
     const handleClick = () => {
         setReservID(Math.floor(Math.random() * max) + min );
@@ -175,25 +175,25 @@ const onChange3 = (event, selectedDate) => {
         var room_type=room_type1;
 
         if (room_type == 0){
-            room_type = "Single: A room assigned to one person."
+            room_type = "Single"
         }
         if (room_type == 1){
-            room_type = "Double: A room assigned to two people."
+            room_type = "Double"
         }
         if (room_type == 2){
-            room_type = "Triple: A room assigned to three people."
+            room_type = "Triple"
         }
         if (room_type == 3){
-            room_type = "Quad: A room assigned to four people."
+            room_type = "Quad"
         }
         if (room_type == 4){
-            room_type = "Queen: A room with a queen-sized bed."
+            room_type = "Queen"
         }
         if (room_type == 5){
-            room_type = "King: A room with a king-sized bed."
+            room_type = "King"
         }
         if (room_type == 6){
-            room_type = "Twin: A room with two beds."
+            room_type = "Twin"
         }
 
         var no_of_occupants=no_of_occupants1;
@@ -440,13 +440,13 @@ const onChange3 = (event, selectedDate) => {
 <ModalDropdown 
         style={styles.txtStyle}
         options={[
-            "Single: A room assigned to one person.",
-            "Double: A room assigned to two people.",
-            "Triple: A room assigned to three people.",
-            "Quad: A room assigned to four people.",
-            "Queen: A room with a queen-sized bed.",
-            "King: A room with a king-sized bed.",
-            "Twin: A room with two bed.",]}
+            "Single",
+            "Double",
+            "Triple",
+            "Quad",
+            "Queen",
+            "King",
+            "Twin",]}
         defaultValue={"Type of Room                                                                  V"}
         textStyle={{
            fontSize: 14

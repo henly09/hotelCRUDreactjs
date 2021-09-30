@@ -5,6 +5,15 @@ import hotel from '../assets/hotel.png';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
+
+import single from '../assets/thumbnail/single.png';
+import double from '../assets/thumbnail/double.png';
+import triple from '../assets/thumbnail/triple.png';
+import quad from '../assets/thumbnail/quad.jpg';
+import queen from '../assets/thumbnail/queen.png';
+import king from '../assets/thumbnail/king.png';
+import twin from '../assets/thumbnail/twin.png';
+
 export default class HotelList extends Component {
 
     constructor()
@@ -16,25 +25,55 @@ export default class HotelList extends Component {
     }
     }
 
-    componentDidMount() {
-        return fetch('http://10.0.2.2:80/Hotel/displayall.php')
-          .then((response) => response.json())
-          .then((responseJson) => {
+      componentDidMount = async() => {
+        this.setState({ isLoading: true });
+        try {  
+         const responseJson = await fetch('http://10.0.2.2:80/Hotel/displayall.php')
+         const json = await responseJson.json();
             this.setState({
               isLoading: false,
-              dataSource: responseJson
+              dataSource: json
             })  
-          });
+        } catch(error) { 
+            console.log(error);
+            this.setState({ isLoading: false });
+        }
       }
     
-     _renderItem = ({ item }) => (
-         
-        <TouchableOpacity onPress={() => alert(item.body)}>
+     _renderItem = ({ item }) => {
+       
+      thumbnail = item.room_type;
+     
+      const rooms = [
+       single,
+       double,
+       triple,
+       quad,
+       queen,
+       king,
+       twin];
+     
+     var e;
+     var thumbnail;
+     
+     if ( thumbnail == 'Single'){e=0;}
+     if ( thumbnail == 'Double'){e=1;}
+     if ( thumbnail == 'Triple'){e=2;}
+     if ( thumbnail == 'Quad'){e=3;}
+     if ( thumbnail == 'Queen'){e=4;}
+     if ( thumbnail == 'King'){e=5;}
+     if ( thumbnail == 'Twin'){e=6;}
+
+      return (
+      <TouchableOpacity onPress={() => alert(item.body)}>
+            <View>
             <View style={styles.item}>
-                <Text style={styles.text}>ID#:{item.customerID}, Name:{item.fullname}, Reserve#:{item.reservID}</Text>
+                <Text style={styles.text}>ID#:{item.customerID}, Name:{item.fullname},{"\n"}Reserve#:{item.reservID},{"\n"}Type:{item.room_type}</Text>
+            </View>
+            <Image style= {styles.thumbnail}source={rooms[e]}/>
             </View>
         </TouchableOpacity>
-     );
+     );}
 
         render() {
  
@@ -100,6 +139,7 @@ export default class HotelList extends Component {
 
                 <View style={styles.container}>     
                        <FlatList
+                          style={{padding: 5, width: '100%'}}
                           data={ this.state.dataSource }         
                           renderItem={this._renderItem}
                           keyExtractor={(item, index) => index.toString()}
@@ -130,28 +170,37 @@ export default class HotelList extends Component {
                 const styles = StyleSheet.create({
                  
                   container :{
-                    alignItems:'flex-start',
+                    alignItems:'center',
                     backgroundColor: '#F5FCFF',
-                    top:150,
-                    height: '65%',
+                    textAlign: 'center',
+                    top:160,
+                    height: '63%',
                     width: '90%',
                     left: '5%',
-                    paddingLeft: 20,
-                    paddingTop: 10,
-                    paddingBottom: 10
-
+                    padding: 10
                     },
                    
                 item:{
-                  paddingBottom: 5,
-                  borderBottomWidth:2,
+                  borderBottomWidth:3,
                   borderBottomColor: '#eee',
+                  width: '90%',
+                  padding :10,
+                  left: 50
                     },
                     
                 text:{
-                        fontSize: 14,
+                        fontSize: 15,
                         fontFamily: 'sans-serif',
                         fontWeight: 'bold',
                         fontStyle: "italic",
-                    }
+                    },
+                
+                thumbnail:{
+                   resizeMode: 'center',
+                   position: 'absolute',
+                   height: 50, 
+                   width: 50, 
+                   top: 20,
+                   backgroundColor:'#630513'
+                }
                 });
