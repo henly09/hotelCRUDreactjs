@@ -54,42 +54,42 @@ function HotelScreen({ navigation }) {
        <View style={styles.arrangement}>
        <TouchableNativeFeedback onPress={() => navigation.navigate('Single')}>    
            <Image 
-           style={styles.breadlogo1}
+           style={styles.hotellogo1}
            source={single}/>
        </TouchableNativeFeedback>
        <TouchableNativeFeedback onPress={() => navigation.navigate('Double')}>
            <Image 
-          style={styles.breadlogo2}
+          style={styles.hotellogo2}
            source={double}/>
        </TouchableNativeFeedback>
        </View>
        <View style={styles.arrangement}>
        <TouchableNativeFeedback onPress={() => navigation.navigate('Triple')}> 
            <Image 
-           style={styles.breadlogo1}
+           style={styles.hotellogo1}
            source={triple}/>
        </TouchableNativeFeedback>
        <TouchableNativeFeedback onPress={() => navigation.navigate('Quad')}> 
            <Image 
-           style={styles.breadlogo2}
+           style={styles.hotellogo2}
            source={quad}/>
        </TouchableNativeFeedback>
        </View>
        <View style={styles.arrangement}>
        <TouchableNativeFeedback onPress={() => navigation.navigate('Queen')}>
            <Image 
-            style={styles.breadlogo1}
+            style={styles.hotellogo1}
            source={queen}/>
        </TouchableNativeFeedback>
        <TouchableNativeFeedback onPress={() => navigation.navigate('King')}>
-           <Image style={styles.breadlogo2}
+           <Image style={styles.hotellogo2}
            source={king}/>
        </TouchableNativeFeedback>
        </View>
        <View style={styles.arrangement}>
        <TouchableNativeFeedback onPress={() => navigation.navigate('Twin')}>
            <Image 
-           style={styles.breadlogo1}
+           style={styles.hotellogo1}
            source={twin}/>
        </TouchableNativeFeedback>
        </View>
@@ -122,7 +122,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   
-  breadlogo1: {
+  hotellogo1: {
     borderWidth: 3,
     borderColor: '#6c0c1c',
     height: 150, 
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     bottom: 25 ,
   }, 
   
-  breadlogo2: {
+  hotellogo2: {
     borderWidth: 3,
     borderColor: '#6c0c1c',
     height: 150, 

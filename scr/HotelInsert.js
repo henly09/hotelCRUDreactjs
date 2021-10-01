@@ -103,7 +103,6 @@ const onChange3 = (event, selectedDate) => {
 
     const handleClick = () => {
         setReservID(Math.floor(Math.random() * max) + min );
-        console.log(reservID1);
       };
    
 
