@@ -21,7 +21,8 @@ export default class HotelList extends Component {
       super();
       this.state = { 
       isLoading: true,
-      dataSource:[]
+      dataSource:[],
+      isFetching:false
     }
     }
 
@@ -39,6 +40,11 @@ export default class HotelList extends Component {
             this.setState({ isLoading: false });
         }
       }
+
+      onRefresh() {
+        this.setState({isFetching: true,},() => {this.componentDidMount();});
+        this.setState({ isFetching: false })
+    }
     
      _renderItem = ({ item }) => {
        
@@ -140,7 +146,9 @@ export default class HotelList extends Component {
                 <View style={styles.container}>     
                        <FlatList
                           style={{padding: 5, width: '100%'}}
-                          data={ this.state.dataSource }         
+                          data={ this.state.dataSource }
+                          onRefresh={() => this.onRefresh()}
+                          refreshing={this.state.isFetching}         
                           renderItem={this._renderItem}
                           keyExtractor={(item, index) => index.toString()}
                         />                
@@ -152,11 +160,8 @@ export default class HotelList extends Component {
   top: 670,
   left: 150,
 }}>
-      <Button
-        color="#630513"
-        title={"Refresh"}
-        onPress={() => this.componentDidMount()}
-      />
+
+
       
 </View>
                 </ImageBackground>
@@ -174,7 +179,7 @@ export default class HotelList extends Component {
                     backgroundColor: '#F5FCFF',
                     textAlign: 'center',
                     top:160,
-                    height: '63%',
+                    height: '70%',
                     width: '90%',
                     left: '5%',
                     padding: 10

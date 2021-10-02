@@ -475,6 +475,7 @@ const onChange3 = (event, selectedDate) => {
                     keyboardType={'numeric'}
                     onChangeText={no_of_occupants=>setNo_of_occupants(no_of_occupants)}
                 />
+                
  <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly'}}>
   
                 <TextInput

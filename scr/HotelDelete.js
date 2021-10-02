@@ -21,6 +21,7 @@ import quad from '../assets/thumbnail/quad.jpg';
 import queen from '../assets/thumbnail/queen.png';
 import king from '../assets/thumbnail/king.png';
 import twin from '../assets/thumbnail/twin.png';
+import hotel from '../assets/hotel.png';
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
@@ -34,7 +35,8 @@ export default class HotelDelete extends Component {
         }
         this.state = { 
             isLoading: true,
-            dataSource:[]
+            dataSource:[],
+            isFetching:false
           }
     }
 
@@ -96,6 +98,11 @@ componentDidMount = async() => {
     }
   }
 
+  onRefresh() {
+    this.setState({isFetching: true,},() => {this.componentDidMount();});
+    this.setState({ isFetching: false })
+}
+
   _renderItem = ({ item }) => {
        
     thumbnail = item.room_type;
@@ -152,37 +159,72 @@ componentDidMount = async() => {
                 width: '100%'
                 }}>
 
+<Image 
+         source= {hotel}
+         style={{ 
+         height: 150,
+         width: 150,
+         position: 'absolute',
+         alignSelf:'flex-end',
+         right: 12,
+         top: 20,
+         resizeMode: 'center',
+         }}/>
+        <Text style={{
+        fontSize: 35,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
+        position: 'absolute',
+        top: 55,
+        left: 8,
+        color: 'white',
+        textShadowColor:'#0c0d0e',
+        textShadowOffset:{width: 10, height: 10},
+        textShadowRadius:20,
+      }}> HOTEL™ </Text> 
+
+<Text style={{
+        fontSize: 20,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
+        position: 'absolute',
+        top: 100,
+        left: 13,
+        color: 'white',
+        textShadowColor:'#0c0d0e',
+        textShadowOffset:{width: 10, height: 10},
+        textShadowRadius:20,
+      }}> DATABASE LIST </Text>
+
                     
         <View style={styles.viewStyle}>
+        <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly', top: 19}}>
             <TextInput
                 placeholder={"Enter Customer ID#"}
                 placeholderTextColor={"#000000"}
                 keyboardType={"numeric"}
-                style={styles.txtStyle}
+                style={styles.txtStyle3}
                 onChangeText={customerID=>this.setState({customerID})}
             />
+        <TouchableOpacity
+                    onPress={() => this.DeleteRecord()}>
+                    <Text style={styles.button}>DELETE</Text>
+    </TouchableOpacity>
+        </View>
     
             <SafeAreaView style={styles.container}>     
                    <FlatList
                       style={{padding: 10, width: '100%'}}
-                      data={ this.state.dataSource }       
+                      data={ this.state.dataSource }
+                      onRefresh={() => this.onRefresh()}
+                      refreshing={this.state.isFetching}        
                       renderItem={this._renderItem}
                       keyExtractor={(item, index) => index.toString()}
                     />                
             </SafeAreaView>
-    <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly', top: 19}}>
 
-            <Button
-                color="#630513"
-                title={"Delete Record"}
-                onPress={() => this.DeleteRecord()}
-            />
-             <Button
-                color="#630513"
-                title={"Refresh"}
-                onPress={() => this.componentDidMount()}
-            />
-    </View>
         </View>
         </ImageBackground>
         </View>
@@ -196,9 +238,7 @@ const styles=StyleSheet.create({
     viewStyle:
     {
         padding:20,
-        marginTop:100,
-        marginBottom: 10,
-        top: '-5%',
+        top: '14%',
     },
 
     txtStyle:
@@ -244,7 +284,29 @@ const styles=StyleSheet.create({
         width: 50, 
         top: 20,
         backgroundColor:'#630513'
-    }
+    },
+    txtStyle3:{
+        borderBottomWidth: 1,
+        borderBottomColor: 'black',
+        padding: 10,
+        marginBottom: 10,
+        backgroundColor: 'white',
+        width: 245,
+        marginRight: 5
+    },
+    button:{
+        borderBottomWidth: 1,
+        borderBottomColor: 'black',
+        width: 100,
+        backgroundColor: '#630513',
+        fontSize: 14,
+        height: 48,
+        textAlign: 'center',
+        color: 'white',
+        fontWeight: 'bold',
+        borderRadius: 3,
+        paddingTop:14
+    },
 
 
 
