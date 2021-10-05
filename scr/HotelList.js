@@ -145,7 +145,7 @@ export default class HotelList extends Component {
 
                 <View style={styles.container}>     
                        <FlatList
-                          style={{padding: 5, width: '100%'}}
+                          style={{padding: 10, width: '100%'}}
                           data={ this.state.dataSource }
                           onRefresh={() => this.onRefresh()}
                           refreshing={this.state.isFetching}         
@@ -182,7 +182,6 @@ export default class HotelList extends Component {
                     height: '70%',
                     width: '90%',
                     left: '5%',
-                    padding: 10
                     },
                    
                 item:{
