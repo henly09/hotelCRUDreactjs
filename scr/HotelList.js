@@ -179,7 +179,7 @@ export default class HotelList extends Component {
                     backgroundColor: '#F5FCFF',
                     textAlign: 'center',
                     top:160,
-                    height: '70%',
+                    height: '68%',
                     width: '90%',
                     left: '5%',
                     },

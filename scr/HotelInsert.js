@@ -540,10 +540,8 @@ const onChange3 = (event, selectedDate) => {
 const styles=StyleSheet.create({
 
     ViewStyle:{
-        flex:1,
         padding: 20,
-        marginTop:10,
-        top: '5%'
+        top: '4%'
     },
 
     txtStyle:{

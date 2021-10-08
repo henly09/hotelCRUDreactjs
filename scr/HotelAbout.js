@@ -23,16 +23,16 @@ import quad from '../assets/hotelroom/quad.jpg';
 import queen from '../assets/hotelroom/queen.jpg';
 import king from '../assets/hotelroom/king.jpg';
 import twin from '../assets/hotelroom/twin.jpg';
-import bg from '../assets/bg.jpg';
+import hotelbg2 from '../assets/hotelbg2.gif';
 
 function HotelScreen({ navigation }) {
     return (
        <SafeAreaView>
         <View>
         <ImageBackground
-                   opacity={0.5}
+                   opacity={0.9}
                    style={styles.imagebackground}
-                   source={bg}/>
+                   source={hotelbg2}/>
        </View>
 
        <Text style={{
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   
   imagebackground: {
-    height: 755,
+    height: 800,
     width: 500,
     backgroundColor: 'black',
     position: 'absolute',

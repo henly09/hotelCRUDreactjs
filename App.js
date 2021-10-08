@@ -4,12 +4,11 @@
 // Gmail: monterahens@gmail.com 
 
 import * as React from 'react';
-import { View, Text, Button, Image, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, Text, Button, Image, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-import ModalDropdown from 'react-native-modal-dropdown';
+import SideMenu from 'react-native-side-menu-updated';
+import { useNavigation } from '@react-navigation/native';
 
 import HotelInsert from './scr/HotelInsert.js';
 import HotelSearch from './scr/HotelSearch.js';
@@ -17,7 +16,6 @@ import HotelDelete from './scr/HotelDelete.js';
 import HotelList from './scr/HotelList.js';
 import HotelAbout from './scr/HotelAbout.js';
 
-import dash from './assets/dash.png';
 import hotel from './assets/hotel.png';
 import bg from './assets/bg.jpg';
 import home from './assets/home.png';
@@ -26,12 +24,11 @@ import search from './assets/search.png';
 import deleted from './assets/delete.png';
 import list from './assets/list.png';
 import about from './assets/about.png';
+import hotelbar from './assets/hotelbar.gif';
+import menubg from './assets/menubg.png';
 
 
 function HomeScreen({ navigation }) {
-
-
-  const pages = ['Insert', 'Search','Delete', 'HotelList', 'HotelAbout'];
 
   return (
     <View>
@@ -43,47 +40,7 @@ function HomeScreen({ navigation }) {
        width: '100%'
      }}>
     
-    <ModalDropdown 
-        style={{
-        top: 35,
-        width: 100,
-        right: 10,
-        position: 'relative',
-      }}
-        options={['Insert', 'Search','Delete', 'Hotel List', 'About']}
-        animated
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        dropdownStyle={{
-          height: 190,
-          width: 130,
-          marginBottom: 100,
-          marginLeft: 20,
-          marginTop: -80,
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-          backgroundColor: "#630513"
-        }}
-
-        dropdownTextStyle={{
-          fontSize: 20,
-          fontStyle: "italic",
-          fontFamily: 'sans-serif',
-          fontWeight: 'bold',
-          backgroundColor: "#630513",
-          color: 'white'
-        }}
-        onSelect = {(e)=> navigation.navigate(pages[e])}>
-
-         <Image 
-         source= {dash}
-         style={{ 
-         height: 80,
-         width: 80,
-         }}/>
-
-        </ModalDropdown>
-
+    
       <Text style={{
         fontSize: 35,
         fontFamily: 'sans-serif',
@@ -127,7 +84,7 @@ function HomeScreen({ navigation }) {
 
       <View style={{ 
         flexDirection: 'row', 
-        top: '110%', 
+        top: '125%', 
         justifyContent: 'space-evenly',
         }}>
 
@@ -169,24 +126,136 @@ function HomeScreen({ navigation }) {
   );
 }
 
-//const Stack = createNativeStackNavigator();
+function SideMenuBar(){
+  const navigation = useNavigation();
+  return(
+<View>
+<ImageBackground
+                source={hotelbar} 
+                resizeMode='cover' 
+                style={{
+                height: '100%',
+                width: '100%'
+     }}> 
+     <ImageBackground
+                opacity={0.70} 
+                resizeMode="cover"
+                source={menubg} 
+                style={{
+                height: '100%',
+                width: '100%',
+     }}>
+
+<Text
+    style={{
+      fontSize: 30,
+      fontFamily: 'sans-serif',
+      fontWeight: 'bold',
+      color:'white',
+      left: 5,
+      top: 100
+    }}
+    > MENU</Text>
+
+  <View style={{
+    top: 100,
+    alignSelf: 'center',
+    width: '100%',
+    left: 15,
+    paddingTop: 10
+  }}>
+
+    <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}> 
+    <Text style={styles.sidemenunav}>HOME</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity onPress={() => navigation.navigate('Insert')}> 
+    <Text style={styles.sidemenunav}>INSERT</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity onPress={() => navigation.navigate('Search')}> 
+    <Text style={styles.sidemenunav}>SEARCH</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity onPress={() => navigation.navigate('Delete')}>
+    <Text style={styles.sidemenunav}>DELETE</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity onPress={() => navigation.navigate('List')}>
+    <Text style={styles.sidemenunav}>DATABASE LIST</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity onPress={() => navigation.navigate('About')}>
+    <Text style={styles.sidemenunav}>MENU</Text>
+    </TouchableOpacity>
+    
+    <TouchableOpacity onPress={() => alert('Page not available!')}>
+    <Text style={styles.sidemenunav}>CONTACT</Text>
+    </TouchableOpacity>
+    
+    <TouchableOpacity onPress={() => alert('Page not available!')}>
+    <Text style={styles.sidemenunav}>SERVICES</Text>
+    </TouchableOpacity>
+
+  </View>
+
+    
+ <View style={{position: 'absolute',top: '74%'}}>        
+         <Image 
+         source= {hotel}
+         style={{ 
+         height: 110,
+         width: 110,
+         left: 35,
+         top:55,
+         resizeMode: 'center',
+         position: 'absolute'
+         }}/>
+
+    <Text style={{
+      fontSize: 10,
+      fontFamily: 'sans-serif',
+      fontWeight:'normal',
+      fontStyle: "italic",
+      top: 150,
+      left: 40,
+      color: 'white',
+      textShadowColor:'#0c0d0e',
+      textShadowOffset:{width: 5, height: 5},
+      textShadowRadius:15,
+      textAlign: 'center',
+    }}>
+      MONTERA™ SYSTEM{'\n'}SOLUTIONS
+    </Text>
+</View>
+     </ImageBackground>
+     </ImageBackground>
+   </View>
+);
+}
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-
+      <SideMenu 
+    openMenuOffset={180} 
+    menu={<SideMenuBar/>} 
+    bounceBackOnOverdraw={false}
+    isOpen={false}
+    allowOverlayPressPropagation={true}>
     <Tab.Navigator
     initialRouteName="Home"
       screenOptions={{
         tabBarStyle: { 
           position: 'absolute',
           backgroundColor: '#630513',
-          borderTopLeftRadius: 5,
-          borderTopRightRadius: 5,
-          height: 60,
-          width: "100%"
+          borderRadius: 10,
+          height: 65,
+          width: "98%",
+          left: 5,
+          bottom: 5
         },
         tabBarShowLabel: false,
         showElevation: true
@@ -228,7 +297,7 @@ export default function App() {
             ),
         }}/>
 
-<Tab.Screen name="HotelAbout" component={HotelAbout}  options = {{
+<Tab.Screen name="About" component={HotelAbout}  options = {{
             headerShown: false,
             tabBarIcon: ({focused}) => (    
               <View>
@@ -281,7 +350,7 @@ export default function App() {
         }}/>
 
     
-      <Tab.Screen name="HotelList" component={HotelList}  options = {{
+      <Tab.Screen name="List" component={HotelList}  options = {{
             headerShown: false,
             tabBarIcon: ({focused}) => (    
               <View>
@@ -301,8 +370,21 @@ export default function App() {
 
 
     </Tab.Navigator>
+    </SideMenu>
     </NavigationContainer>
     
   );
 }
 
+const styles = StyleSheet.create({
+  
+  sidemenunav: {
+    fontSize: 14,
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    color:'white',
+    width: '80%',
+    paddingTop: 20
+  }
+  
+  })
