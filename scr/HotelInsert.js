@@ -550,6 +550,7 @@ const styles=StyleSheet.create({
         padding: 5,
         marginBottom: 10,
         backgroundColor: 'white',
+        borderRadius: 5
     },
     txtStyle2:{
         borderBottomWidth: 1,
@@ -558,6 +559,7 @@ const styles=StyleSheet.create({
         width: 175,
         marginBottom: 10,
         backgroundColor: 'white',
+        borderRadius: 5
     },
     randombutton:{
         borderBottomWidth: 1,
@@ -580,12 +582,14 @@ const styles=StyleSheet.create({
         marginBottom: 10,
         backgroundColor: 'white',
         width: 245,
-        marginRight: 5
+        marginRight: 5,
+        borderRadius: 5
     },
     txtStyle4:{
         borderBottomWidth: 1,
         borderBottomColor: 'black',
         width: '50%',
+        borderRadius: 5
     },
 
     txtStyle5:{
@@ -597,7 +601,8 @@ const styles=StyleSheet.create({
         backgroundColor: 'white',
         alignSelf: 'center',
         textAlign: 'center',
-        fontSize: 13
+        fontSize: 13,
+        borderRadius: 5
         
     },
    

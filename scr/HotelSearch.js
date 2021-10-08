@@ -152,7 +152,8 @@ export default class HotelSearch extends Component {
                     backgroundColor: 'white',
                     paddingLeft: 7,
                     height: 37,
-                    width: '70%'
+                    width: '70%',
+                    borderRadius: 5
                 }}
                 onChangeText={customerID=>this.setState({customerID})}
             />
@@ -227,6 +228,7 @@ const styles=StyleSheet.create({
         marginBottom: 5,
         backgroundColor: 'white',
         padding: 7,
+        borderRadius: 5
     },
 
     randombutton:{
