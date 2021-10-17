@@ -435,7 +435,7 @@ function HomeScreen({ navigation }) {
       <Button
         color="#630513"
         title={"Insert"}
-        onPress={() => navigation.navigate("HomeScreen")}
+        onPress={() => navigation.navigate("Insert")}
        
       />
 
