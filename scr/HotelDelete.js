@@ -162,8 +162,8 @@ componentDidMount = async() => {
 <Image 
          source= {hotel}
          style={{ 
-         height: 150,
-         width: 150,
+         height: 135,
+         width: 135,
          position: 'absolute',
          alignSelf:'flex-end',
          right: 12,

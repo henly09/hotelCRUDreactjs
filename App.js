@@ -2,13 +2,14 @@
 // Ownded and Created by : Montera, John Henly A.
 // FB: fb.com/mhax.ter
 // Gmail: monterahens@gmail.com 
-
 import * as React from 'react';
-import { View, Text, Button, Image, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { useState } from 'react';
+import { View, Text, Image, ImageBackground,TouchableOpacity, StyleSheet, TextInput, ToastAndroid, Button } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import SideMenu from 'react-native-side-menu-updated';
+import { NavigationContainer } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import SideMenu from 'react-native-side-menu-updated';
 
 import HotelInsert from './scr/HotelInsert.js';
 import HotelSearch from './scr/HotelSearch.js';
@@ -26,105 +27,13 @@ import list from './assets/list.png';
 import about from './assets/about.png';
 import hotelbar from './assets/hotelbar.gif';
 import menubg from './assets/menubg.png';
+import hotelbg2 from './assets/hotelbg2.gif';
 
+import fb from './assets/fb.png';
+import google from './assets/google.png';
+import insta from './assets/insta.png';
+import twitter from './assets/twitter.png';
 
-function HomeScreen({ navigation }) {
-
-  return (
-    <View>
-     <ImageBackground 
-     source={bg} 
-     resizeMode="cover" 
-     style={{
-       height: '100%',
-       width: '100%'
-     }}>
-    
-    
-      <Text style={{
-        fontSize: 35,
-        fontFamily: 'sans-serif',
-        fontWeight: 'bold',
-        fontStyle: "italic",
-        position: 'absolute',
-        alignSelf:'center',
-        top: 320,
-        color: 'white',
-        textShadowColor:'#0c0d0e',
-        textShadowOffset:{width: 10, height: 10},
-        textShadowRadius:20,
-        textAlign: 'center'
-      }}> LUXURY BOUTIQUE {"\n"} DAVAO HOTEL </Text>
-
-        <Text style={{
-        fontSize: 20,
-        fontFamily: 'sans-serif',
-        fontWeight: 'bold',
-        fontStyle: "italic",
-        position: 'absolute',
-        alignSelf:'center',
-        top: 410,
-        color: 'white',
-        textShadowColor:'#0c0d0e',
-        textShadowOffset:{width: 10, height: 10},
-        textShadowRadius:20,
-        textAlign: 'center'
-      }}> Hotel Reservation Database System Management™ </Text>
-
-        <Image 
-         source= {hotel}
-         style={{ 
-         height: 200,
-         width: 340,
-         position: 'absolute',
-         alignSelf:'center',
-         top: 100,
-         resizeMode: 'stretch',
-         }}/>
-
-      <View style={{ 
-        flexDirection: 'row', 
-        top: '125%', 
-        justifyContent: 'space-evenly',
-        }}>
-
-      <Button
-        color="#630513"
-        title={"Insert"}
-        onPress={() => navigation.navigate('Insert')}
-       
-      />
-
-      <Button
-        color="#630513"
-        title={"Search"}
-        onPress={() => navigation.navigate('Search')}
-       
-      />
-
-      <Button
-        color="#630513"
-        title={"Delete"}
-        onPress={() => navigation.navigate('Delete')}
-      />
-
-      <Button
-        color="#630513"
-        title={"Hotel List"}
-        onPress={() => navigation.navigate('HotelList')}
-      />
-
-      <Button
-        color="#630513"
-        title={"About"}
-        onPress={() => navigation.navigate('HotelAbout')}
-      />
-
-      </View>
-      </ImageBackground>
-        </View>
-  );
-}
 
 function SideMenuBar(){
   const navigation = useNavigation();
@@ -235,10 +144,10 @@ function SideMenuBar(){
 }
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-export default function App() {
+function App() {
   return (
-    <NavigationContainer>
       <SideMenu 
     openMenuOffset={180} 
     menu={<SideMenuBar/>} 
@@ -371,8 +280,193 @@ export default function App() {
 
     </Tab.Navigator>
     </SideMenu>
+  );
+}
+
+function LoginScreen({ navigation }) {
+
+  const user = 'henly09';
+  const pass = '09108076145145';
+  
+  const [loginuser, setLoginuser] = useState('');
+  const [loginpass, setLoginpass] = useState('');
+
+  onLogin = async() => {
+    if (user == loginuser && pass == loginpass){
+      ToastAndroid.show("Login Successfully!",ToastAndroid.SHORT);
+      console.log("user: "+loginuser +" "+"pass: "+loginpass);
+      navigation.navigate("HomeSecond");
+    }
+    else{
+      ToastAndroid.show("Username or Password is Invalid!",ToastAndroid.SHORT);
+      console.log("user: "+loginuser +" "+"pass: "+loginpass);
+    }
+  }
+  return (
+    <View style={{position: 'absolute', height: '100%',width: '100%'}}>  
+          <ImageBackground
+                  source={hotelbg2} 
+                  resizeMode='cover' 
+                  style={{
+                  height: '100%',
+                  width: '100%',
+                  position: 'absolute',
+       }}/> 
+      
+        <Text style={styles.hoteltext}> LUXURY BOUTIQUE {"\n"} DAVAO HOTEL </Text>
+  
+          <Text style={styles.sysdat}> Hotel Reservation Database System Management™ </Text>
+  
+          <Image 
+           source= {hotel}
+           style={styles.logo}/>
+  
+           <View style={{alignSelf: 'center', justifyContent: 'center', top: 400,justifyContent: 'space-evenly' }}>
+  
+           <TextInput
+                      placeholder={"Username:"}
+                      placeholderTextColor={"white"}
+                      style={styles.txtStyle}
+                      onChangeText={loginuser=>setLoginuser(loginuser)}
+                  />
+  
+            <TextInput
+                      placeholder={"Password:"}
+                      placeholderTextColor={"white"}
+                      style={styles.txtStyle}
+                      secureTextEntry={true}
+                      onChangeText={loginpass=>setLoginpass(loginpass)}
+                  />
+  
+           </View>
+  
+           <View style={{alignSelf: 'center', top: 420}}> 
+        
+           <TouchableOpacity onPress={onLogin}>
+             <Text style={styles.loginbutton}>LOGIN</Text>
+           </TouchableOpacity>
+           </View> 
+  
+           <View style={{ 
+          flexDirection: 'row', 
+          top: '110%', 
+          justifyContent: 'space-evenly',
+          }}>
+          <Image source= {fb} style={styles.loginwith}/>
+          <Image source= {google} style={styles.loginwith}/>
+          <Image source= {insta} style={styles.loginwith}/>
+          <Image source= {twitter} style={styles.loginwith}/>
+          </View>
+        </View>
+  );
+}
+
+export default function Main() {
+  return(
+    <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown:false}}>
+          <Stack.Screen name="Home" component={LoginScreen}/>
+          <Stack.Screen name="HomeSecond" component={App}/>
+        </Stack.Navigator>
     </NavigationContainer>
+  );
+}
+
+function HomeScreen({ navigation }) {
+
+  return (
+    <View>
+     <ImageBackground 
+     source={bg} 
+     resizeMode="cover" 
+     style={{
+       height: '100%',
+       width: '100%'
+     }}>
     
+    
+      <Text style={{
+        fontSize: 35,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
+        position: 'absolute',
+        alignSelf:'center',
+        top: 320,
+        color: 'white',
+        textShadowColor:'#0c0d0e',
+        textShadowOffset:{width: 10, height: 10},
+        textShadowRadius:20,
+        textAlign: 'center'
+      }}> LUXURY BOUTIQUE {"\n"} DAVAO HOTEL </Text>
+
+        <Text style={{
+        fontSize: 20,
+        fontFamily: 'sans-serif',
+        fontWeight: 'bold',
+        fontStyle: "italic",
+        position: 'absolute',
+        alignSelf:'center',
+        top: 410,
+        color: 'white',
+        textShadowColor:'#0c0d0e',
+        textShadowOffset:{width: 10, height: 10},
+        textShadowRadius:20,
+        textAlign: 'center'
+      }}> Hotel Reservation Database System Management™ </Text>
+
+        <Image 
+         source= {hotel}
+         style={{ 
+         height: 210,
+         width: 250,
+         position: 'absolute',
+         alignSelf:'center',
+         top: 100,
+         resizeMode: 'stretch',
+         }}/>
+
+      <View style={{ 
+        flexDirection: 'row', 
+        top: '125%', 
+        justifyContent: 'space-evenly',
+        }}>
+
+      <Button
+        color="#630513"
+        title={"Insert"}
+        onPress={() => navigation.navigate("HomeScreen")}
+       
+      />
+
+      <Button
+        color="#630513"
+        title={"Search"}
+        onPress={() => navigation.navigate("Search")}
+       
+      />
+
+      <Button
+        color="#630513"
+        title={"Delete"}
+        onPress={() => navigation.navigate("Delete")}
+      />
+
+      <Button
+        color="#630513"
+        title={"Hotel List"}
+        onPress={() => navigation.navigate("List")}
+      />
+
+      <Button
+        color="#630513"
+        title={"About"}
+        onPress={() => navigation.navigate("About")}
+      />
+
+      </View>
+      </ImageBackground>
+        </View>
   );
 }
 
@@ -385,6 +479,78 @@ const styles = StyleSheet.create({
     color:'white',
     width: '80%',
     paddingTop: 20
+  },
+  logo: { 
+    height: 200,
+    width: 200,
+    position: 'absolute',
+    alignSelf:'center',
+    top: 40,
+    resizeMode: 'contain',
+    },
+
+  sysdat: {
+    fontSize: 20,
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    fontStyle: "italic",
+    position: 'absolute',
+    alignSelf:'center',
+    top: 325,
+    color: 'white',
+    textShadowColor:'#0c0d0e',
+    textShadowOffset:{width: 5, height: 5},
+    textShadowRadius:15,
+    textAlign: 'center'
+  },
+
+  hoteltext: {
+    fontSize: 35,
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    fontStyle: "italic",
+    position: 'absolute',
+    alignSelf:'center',
+    top: 235,
+    color: 'white',
+    textShadowColor:'#0c0d0e',
+    textShadowOffset:{width: 5, height: 5},
+    textShadowRadius:15,
+    textAlign: 'center',
+  },
+  
+  txtStyle: {
+    fontSize: 14,
+    backgroundColor: '#941414',
+    height: 45,
+    padding: 10,
+    width: 280,
+    marginBottom: 10,
+    borderBottomColor: 'white',
+    borderRadius: 10,
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    color: 'white'
+  },
+
+  loginbutton: {
+    fontSize: 14,
+    backgroundColor: '#ac4444',
+    height: 45,
+    padding: 10,
+    width: 280,
+    marginBottom: 10,
+    borderBottomColor: 'white',
+    borderRadius: 20,
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white'
+  },
+
+  loginwith: {
+    height: 55,
+    width: 55
   }
   
   })
