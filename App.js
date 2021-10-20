@@ -481,21 +481,18 @@ function Slider({ navigation }) {
      title: 'SERVICE',
      text: 'We have Luxury Room Hotels and Services',
      image: require('./assets/hotelbar.gif'),
-     backgroundColor: '#fcc464'
    },
    {
      key: 2,
      title: 'OFFERS',
      text: 'We offer Relaxation Services',
      image: require('./assets/hotelbg2.gif'),
-     backgroundColor: '#ecd7b5'
    },
    {
      key: 3,
      title: 'CHILL',
      text: 'Check In/Reserve now and review us on Google Play Store.',
      image: require('./assets/hotelbar2.gif'),
-     backgroundColor: '#dc8e94'
    }
  ];
 
@@ -504,8 +501,17 @@ function Slider({ navigation }) {
  }
 
   _renderItem = ({ item }) => {
+
+    const bg = [styles.slider,styles.slider1,styles.slider2];
+
+    var e;
+     
+    if ( item.title == 'SERVICE'){e=0;}
+    if ( item.title == 'OFFERS'){e=1;}
+    if ( item.title == 'CHILL'){e=2;}
+
    return (
-     <View style={styles.slider}>
+     <View style={bg[e]}>
        <Text style={styles.title}>{item.title}</Text>
              <Image style={styles.image} source={item.image} />
        <Text style={styles.text}>{item.text}</Text>
@@ -574,7 +580,21 @@ const styles = StyleSheet.create({
   slider: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#941414',
+    backgroundColor: '#24141c',
+    position: 'absolute'
+  },
+
+  slider1: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#843434',
+    position: 'absolute'
+  },
+
+  slider2: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#1c041c',
     position: 'absolute'
   },
 
