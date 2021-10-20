@@ -10,6 +10,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SideMenu from 'react-native-side-menu-updated';
+import AppIntroSlider from 'react-native-app-intro-slider';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import HotelInsert from './scr/HotelInsert.js';
 import HotelSearch from './scr/HotelSearch.js';
@@ -116,7 +118,7 @@ function SideMenuBar(){
          height: 110,
          width: 110,
          left: 35,
-         top:55,
+         top:45,
          resizeMode: 'center',
          position: 'absolute'
          }}/>
@@ -127,7 +129,7 @@ function SideMenuBar(){
       fontWeight:'normal',
       fontStyle: "italic",
       top: 150,
-      left: 40,
+      left: 45,
       color: 'white',
       textShadowColor:'#0c0d0e',
       textShadowOffset:{width: 5, height: 5},
@@ -295,7 +297,7 @@ function LoginScreen({ navigation }) {
     if (user == loginuser && pass == loginpass){
       ToastAndroid.show("Login Successfully!",ToastAndroid.SHORT);
       console.log("user: "+loginuser +" "+"pass: "+loginpass);
-      navigation.navigate("HomeSecond");
+      navigation.navigate("HomeHalf");
     }
     else{
       ToastAndroid.show("Username or Password is Invalid!",ToastAndroid.SHORT);
@@ -366,6 +368,7 @@ export default function Main() {
     <NavigationContainer>
         <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown:false}}>
           <Stack.Screen name="Home" component={LoginScreen}/>
+          <Stack.Screen name="HomeHalf" component={Slider}/>
           <Stack.Screen name="HomeSecond" component={App}/>
         </Stack.Navigator>
     </NavigationContainer>
@@ -470,6 +473,82 @@ function HomeScreen({ navigation }) {
   );
 }
 
+function Slider({ navigation }) {
+
+  const slides = [
+   {
+     key: 1,
+     title: 'SERVICE',
+     text: 'We have Breads and Drinks',
+     image: require('./assets/hotelbar.gif'),
+     backgroundColor: '#fcc464'
+   },
+   {
+     key: 2,
+     title: 'OFFERS',
+     text: 'We offer authentic breads with authentic recipes',
+     image: require('./assets/hotelbg2.gif'),
+     backgroundColor: '#ecd7b5'
+   },
+   {
+     key: 3,
+     title: 'CHILL',
+     text: 'Order now and review us on Google Play Store.',
+     image: require('./assets/hotelbar2.gif'),
+     backgroundColor: '#dc8e94'
+   }
+ ];
+
+ onCall = async() => {
+   navigation.navigate('HomeSecond');
+ }
+
+  _renderItem = ({ item }) => {
+   return (
+     <View style={styles.slider}>
+       <Text style={styles.title}>{item.title}</Text>
+             <Image style={styles.image} source={item.image} />
+       <Text style={styles.text}>{item.text}</Text>
+     </View>
+   );
+ }
+
+ _renderNextButton = () => {
+   return (
+     <View style={styles.buttonCircle}>
+       <Icon
+         name="arrow-forward-outline"
+         color="rgba(255, 255, 255, .9)"
+         size={24}
+       />
+     </View>
+   );
+ };
+ _renderDoneButton = () => {
+   return (
+     <View style={styles.buttonCircle}>
+       <Icon
+         name="md-checkmark"
+         color="rgba(255, 255, 255, .9)"
+         size={24}
+       />
+     </View>
+   );
+ };
+
+ return (
+   <AppIntroSlider
+     data={slides}
+     renderItem={_renderItem}
+     renderDoneButton={_renderDoneButton}
+     renderNextButton={_renderNextButton}
+     keyExtractor={(item, index) => index.toString()}
+     dotClickEnabled={true}
+     onDone={onCall}
+   />
+ );
+}
+
 const styles = StyleSheet.create({
   
   sidemenunav: {
@@ -480,6 +559,53 @@ const styles = StyleSheet.create({
     width: '80%',
     paddingTop: 20
   },
+
+  title:{
+    alignSelf: 'center',
+    top:140,
+    fontSize: 20,
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    fontStyle: "italic",
+    textAlign: 'center',
+    color: 'white'
+  },
+
+  slider: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#941414',
+    position: 'absolute'
+  },
+
+  text:{
+    alignSelf: 'center',
+    top: 180,
+    fontSize: 20,
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    fontStyle: "italic",
+    textAlign: 'center',
+    color: 'white'
+  },
+
+  image: {
+   resizeMode: 'cover',
+   height: 250,
+   width: 250,
+   alignSelf: 'center',
+   top: '20%',
+  },
+
+  buttonCircle: {
+    width: 40,
+    height: 40,
+    backgroundColor: 'rgba(0, 0, 0, .2)',
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   logo: { 
     height: 200,
     width: 200,
