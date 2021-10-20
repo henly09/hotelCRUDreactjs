@@ -479,21 +479,21 @@ function Slider({ navigation }) {
    {
      key: 1,
      title: 'SERVICE',
-     text: 'We have Breads and Drinks',
+     text: 'We have Luxury Room Hotels and Services',
      image: require('./assets/hotelbar.gif'),
      backgroundColor: '#fcc464'
    },
    {
      key: 2,
      title: 'OFFERS',
-     text: 'We offer authentic breads with authentic recipes',
+     text: 'We offer Relaxation Services',
      image: require('./assets/hotelbg2.gif'),
      backgroundColor: '#ecd7b5'
    },
    {
      key: 3,
      title: 'CHILL',
-     text: 'Order now and review us on Google Play Store.',
+     text: 'Check In/Reserve now and review us on Google Play Store.',
      image: require('./assets/hotelbar2.gif'),
      backgroundColor: '#dc8e94'
    }
