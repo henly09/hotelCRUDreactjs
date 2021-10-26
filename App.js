@@ -100,11 +100,11 @@ function SideMenuBar(){
     <Text style={styles.sidemenunav}>MENU</Text>
     </TouchableOpacity>
     
-    <TouchableOpacity onPress={() => alert('Page not available!')}>
+    <TouchableOpacity onPress={() => ToastAndroid.show("Page Not Available!",ToastAndroid.SHORT)}>
     <Text style={styles.sidemenunav}>CONTACT</Text>
     </TouchableOpacity>
     
-    <TouchableOpacity onPress={() => alert('Page not available!')}>
+    <TouchableOpacity onPress={() => ToastAndroid.show("Page Not Available!",ToastAndroid.SHORT)}>
     <Text style={styles.sidemenunav}>SERVICES</Text>
     </TouchableOpacity>
 
@@ -480,19 +480,19 @@ function Slider({ navigation }) {
      key: 1,
      title: 'SERVICE',
      text: 'We have Luxury Room Hotels and Services',
-     image: require('./assets/hotelbar.gif'),
+     image: require('./assets/hotelgif.gif'),
    },
    {
      key: 2,
      title: 'OFFERS',
      text: 'We offer Relaxation Services',
-     image: require('./assets/hotelbg2.gif'),
+     image: require('./assets/hotelgif2.gif'),
    },
    {
      key: 3,
      title: 'CHILL',
      text: 'Check In/Reserve now and review us on Google Play Store.',
-     image: require('./assets/hotelbar2.gif'),
+     image: require('./assets/hotelgif3.gif'),
    }
  ];
 
@@ -580,21 +580,21 @@ const styles = StyleSheet.create({
   slider: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#24141c',
+    backgroundColor: '#dc3424',
     position: 'absolute'
   },
 
   slider1: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#843434',
+    backgroundColor: '#9c0434',
     position: 'absolute'
   },
 
   slider2: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#1c041c',
+    backgroundColor: '#f4cc64',
     position: 'absolute'
   },
 
