@@ -155,7 +155,8 @@ function App() {
     menu={<SideMenuBar/>} 
     bounceBackOnOverdraw={false}
     isOpen={false}
-    allowOverlayPressPropagation={true}>
+    allowOverlayPressPropagation={true}
+    edgeHitWidth={160}>
     <Tab.Navigator
     initialRouteName="Home"
       screenOptions={{
