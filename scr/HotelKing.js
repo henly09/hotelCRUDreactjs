@@ -2,11 +2,9 @@ import * as React from 'react';
 import { View, 
   Text,  
   StyleSheet, 
-  TouchableNativeFeedback, 
   Image,  
   SafeAreaView, 
   ImageBackground,
-  Alert,
 } from 'react-native';
 // In App.js in a new project
 // Ownded and Created by : Montera, John Henly A.

@@ -1,11 +1,9 @@
-import React, {useState, useEffect, Component } from 'react';
-import { render } from 'react-dom';
+import React, {Component } from 'react';
 import { 
     StyleSheet, 
     Text,
     View, 
     TextInput,
-    Button,
     ImageBackground,
     Image,
     TouchableOpacity
