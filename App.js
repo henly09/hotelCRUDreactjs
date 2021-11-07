@@ -12,6 +12,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SideMenu from 'react-native-side-menu-updated';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Linking } from 'react-native';
 
 import HotelInsert from './scr/HotelInsert.js';
 import HotelSearch from './scr/HotelSearch.js';
