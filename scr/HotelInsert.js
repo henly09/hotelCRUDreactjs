@@ -559,7 +559,8 @@ const styles=StyleSheet.create({
         width: 175,
         marginBottom: 10,
         backgroundColor: 'white',
-        borderRadius: 5
+        borderRadius: 5,
+        marginLeft: 2
     },
     randombutton:{
         borderBottomWidth: 1,
