@@ -164,11 +164,10 @@ function App() {
         tabBarStyle: { 
           position: 'absolute',
           backgroundColor: '#630513',
-          borderRadius: 10,
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
           height: 65,
-          width: "98%",
-          left: 5,
-          bottom: 5
+          width: "100%",
         },
         tabBarShowLabel: false,
         showElevation: true
@@ -509,11 +508,11 @@ function Slider({ navigation }) {
    }
  ];
 
- onCall = async() => {
+ const onCall = async() => {
    navigation.navigate('HomeSecond');
  }
 
-  _renderItem = ({ item }) => {
+ const _renderItem = ({ item }) => {
 
     const bg = [styles.slider,styles.slider1,styles.slider2];
 
@@ -532,7 +531,7 @@ function Slider({ navigation }) {
    );
  }
 
- _renderNextButton = () => {
+ const _renderNextButton = () => {
    return (
      <View style={styles.buttonCircle}>
        <Icon
@@ -543,7 +542,8 @@ function Slider({ navigation }) {
      </View>
    );
  };
- _renderDoneButton = () => {
+
+ const _renderDoneButton = () => {
    return (
      <View style={styles.buttonCircle}>
        <Icon
@@ -607,7 +607,7 @@ const styles = StyleSheet.create({
   slider2: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#f4cc64',
+    backgroundColor: '#f4d46c',
     position: 'absolute'
   },
 
