@@ -105,12 +105,12 @@ export default class HotelList extends Component {
           <Image 
          source= {hotel}
          style={{ 
-         height: 135,
-         width: 135,
+         height: 120,
+         width: 120,
          position: 'absolute',
          alignSelf:'flex-end',
          right: 8,
-         top: 30,
+         top: 39,
          resizeMode: 'center',
          }}/>
 
