@@ -19,6 +19,7 @@ export default class HotelSearch extends Component {
     {
         super(props);
         this.state={
+            customerID:'',
             fullname:'',
             Type_:'',
             sex:'',
@@ -35,11 +36,11 @@ export default class HotelSearch extends Component {
         };
     }
 
-    SearchRecord=()=>
-    {
+    SearchRecord=()=>{ 
+
         var customerID=this.state.customerID;
 
-        if(customerID== null)
+        if(customerID.length == 0)
         {
             alert("Required Field is Missing");
         }
@@ -66,6 +67,7 @@ export default class HotelSearch extends Component {
             )
             .then((response)=>response.json())
             .then((response)=>{
+                this.setState({customerID:response[0].customerID});
                 this.setState({fullname:response[0].fullname});
                 this.setState({Type_:response[0].Type_});
                 this.setState({sex:response[0].sex});
@@ -86,6 +88,74 @@ export default class HotelSearch extends Component {
             })
         }
     }
+
+    UpdateRecord=()=>{
+
+        var customerID = this.state.customerID;
+        var fullname = this.state.fullname;
+        var Type_ = this.state.Type_;
+        var sex = this.state.sex;
+        var date_of_birth = this.state.date_of_birth;
+        var phone_num = this.state.phone_num;
+        var email = this.state.email;
+        var address = this.state.address;
+        var room_num = this.state.room_num;
+        var room_type = this.state.room_type;
+        var no_of_occupants = this.state.no_of_occupants;
+        var reservID = this.state.reservID;
+        var arrival_date = this.state.arrival_date;
+        var departure_date = this.state.departure_date;
+
+
+        if(customerID == null)
+        {
+            console.log(customerID);
+            Alert.alert("Update Info","Required Field is Missing");
+        }
+        else
+        {
+            var InsertAPIURL = "http://10.0.2.2:80/Hotel/update.php";
+            var headers={
+                'Accept':'application/json',
+                'Content-Type':'application.json'
+            };
+
+            var Data={
+                customerID:customerID,
+                fullname:fullname,
+                Type_:Type_,
+                sex:sex,
+                date_of_birth:date_of_birth,
+                phone_num:phone_num,
+                email:email,
+                address:address,
+                room_num:room_num,
+                room_type:room_type,
+                no_of_occupants:no_of_occupants,
+                reservID:reservID,
+                arrival_date:arrival_date,
+                departure_date:departure_date,
+            };
+
+            fetch(InsertAPIURL,
+                {
+                    method:'POST',
+                    headers:headers,
+                    body: JSON.stringify(Data)
+                }
+                )
+                .then((response)=>response.json())
+                .then((response)=>
+                {
+                    alert(response[0].Message);
+                })
+                .catch((error)=>
+                {
+                    alert("Error"+error);
+                })
+        }
+    }
+    
     render()
     {
     return (
@@ -139,6 +209,7 @@ export default class HotelSearch extends Component {
 
 
         <View style={styles.viewStyle}>
+
         <View style= {{ flexDirection: 'row', justifyContent: 'space-evenly'}}>
             <TextInput
                 placeholder={"Enter Customer ID#"}
@@ -155,6 +226,7 @@ export default class HotelSearch extends Component {
                 }}
                 onChangeText={customerID=>this.setState({customerID})}
             />
+
            <TouchableOpacity
                     onPress={this.SearchRecord}>
                     <Text style={styles.randombutton}>SEARCH</Text>

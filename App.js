@@ -166,7 +166,7 @@ function App() {
           backgroundColor: '#630513',
           borderTopLeftRadius: 10,
           borderTopRightRadius: 10,
-          height: 65,
+          height: 66,
           width: "100%",
         },
         tabBarShowLabel: false,
