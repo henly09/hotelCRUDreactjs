@@ -2,7 +2,8 @@ import React, {Component } from 'react';
 import { 
     StyleSheet, 
     Text,
-    View, 
+    View,
+    Button, 
     TextInput,
     ImageBackground,
     Image,
@@ -93,15 +94,10 @@ export default class HotelSearch extends Component {
 
         var customerID = this.state.customerID;
         var fullname = this.state.fullname;
-        var Type_ = this.state.Type_;
-        var sex = this.state.sex;
-        var date_of_birth = this.state.date_of_birth;
         var phone_num = this.state.phone_num;
-        var email = this.state.email;
         var address = this.state.address;
         var room_num = this.state.room_num;
         var room_type = this.state.room_type;
-        var no_of_occupants = this.state.no_of_occupants;
         var reservID = this.state.reservID;
         var arrival_date = this.state.arrival_date;
         var departure_date = this.state.departure_date;
@@ -123,15 +119,10 @@ export default class HotelSearch extends Component {
             var Data={
                 customerID:customerID,
                 fullname:fullname,
-                Type_:Type_,
-                sex:sex,
-                date_of_birth:date_of_birth,
                 phone_num:phone_num,
-                email:email,
                 address:address,
                 room_num:room_num,
                 room_type:room_type,
-                no_of_occupants:no_of_occupants,
                 reservID:reservID,
                 arrival_date:arrival_date,
                 departure_date:departure_date,
@@ -232,48 +223,79 @@ export default class HotelSearch extends Component {
                     <Text style={styles.randombutton}>SEARCH</Text>
     </TouchableOpacity>
         </View>           
-            <Text
-            style={styles.txtStyle}
-            > {"Name: "+this.state.fullname} </Text> 
-            <Text
-            style={styles.txtStyle}
-            > {"Type: "+this.state.Type_} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"Sex: "+this.state.sex} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"Birthday: "+this.state.date_of_birth} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"Phone Number: "+this.state.phone_num} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"Email: "+this.state.email} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"Address: "+this.state.address} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"RoomNum#: "+this.state.room_num} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"Room Type: "+this.state.room_type} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"No of Occupants: "+this.state.no_of_occupants} </Text>
-             <Text
-            style={styles.txtStyle}
-            > {"Reservation ID: "+this.state.reservID} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"Arrival: "+this.state.arrival_date} </Text>
-            <Text
-            style={styles.txtStyle}
-            > {"Departure: "+this.state.departure_date} </Text>
 
+<Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginBottom: 5}}>Fullname:</Text>
+            <TextInput
+            style={styles.txtStyle}
+            value={this.state.fullname}
+            onChangeText={fullname=>this.setState({fullname})}
+            />
+
+<Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginBottom: 5}}>Phone Number:</Text>
+            <TextInput
+            style={styles.txtStyle}
+            value={this.state.phone_num}
+            keyboardType={"numeric"}
+            onChangeText={phone_num=>this.setState({phone_num})}
+            />
+
+<Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginBottom: 5}}>Reservation ID:</Text>
+            <TextInput
+            style={styles.txtStyle}
+            value={this.state.reservID}
+            keyboardType={"numeric"}
+            onChangeText={reservID=>this.setState({reservID})}
+            />
+
+<Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginBottom: 5}}>Address:</Text>
+            <TextInput
+            style={styles.txtStyle}
+            value={this.state.address}
+            onChangeText={address=>this.setState({address})}
+            />
+
+<Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginBottom: 5}}>Room Number:</Text>
+            <TextInput
+            style={styles.txtStyle}
+            value={this.state.room_num}
+            keyboardType={"numeric"}
+            onChangeText={room_num=>this.setState({room_num})}
+            />
+
+<Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginBottom: 5}}>Room Type</Text>
+            <TextInput
+            style={styles.txtStyle}
+            value={this.state.room_type}
+            onChangeText={room_type=>this.setState({room_type})}
+            />
+
+<Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginBottom: 5}}>Date of Arrival:</Text>
+            <TextInput
+            style={styles.txtStyle}
+            value={this.state.arrival_date}
+            keyboardType={"numeric"}
+            onChangeText={arrival_date=>this.setState({arrival_date})}
+            />
+
+<Text style={{color: 'white', fontWeight: 'bold', fontSize: 13, marginBottom: 5}}>Date of Departure:</Text>
+            <TextInput
+            style={styles.txtStyle}
+            value={this.state.departure_date}
+            keyboardType={"numeric"}
+            onChangeText={departure_date=>this.setState({departure_date})}
+            />
+
+            <Text style={{marginBottom: -10}}> </Text>
+
+        <Button
+                color="#6c0c1c"
+                title={"Update"}
+                onPress={this.UpdateRecord}
+                style={styles.containerbutton}
+            />
 
         </View>
+
         </ImageBackground>
         </View>
     )
@@ -281,6 +303,12 @@ export default class HotelSearch extends Component {
 }
 
 const styles=StyleSheet.create({
+
+    containerbutton:
+    {
+        alignSelf: 'center',
+        width: '50%'
+    },
 
     viewStyle:
     {
@@ -297,7 +325,8 @@ const styles=StyleSheet.create({
         borderBottomColor:'#ffffff',
         marginBottom: 5,
         backgroundColor: 'white',
-        padding: 7,
+        padding: 2,
+        paddingLeft: 8,
         borderRadius: 5
     },
 
