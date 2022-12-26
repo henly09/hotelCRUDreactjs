@@ -71,14 +71,14 @@ export default class HotelList extends Component {
      if ( thumbnail == 'Twin'){e=6;}
 
       return (
-      <TouchableOpacity onPress={() => alert(item.body)}>
-            <View>
-            <View style={styles.item}>
-                <Text style={styles.text}>ID#:{item.customerID}, Name:{item.fullname},{"\n"}Reserve#:{item.reservID},{"\n"}Type:{item.room_type}</Text>
-            </View>
-            <Image style= {styles.thumbnail}source={rooms[e]}/>
-            </View>
-        </TouchableOpacity>
+        <TouchableOpacity onPress={() => alert("Customer's Name: "+item.fullname+"\nReserve ID#:"+item.reservID+"\nRoom No#: "+item.room_num+"\nRoom Type: "+item.room_type+"\nArrival Date: "+item.arrival_date+"\nDeparture Date: "+item.departure_date)}>
+        <View>
+        <View style={styles.item}>
+            <Text style={styles.text}>ID#:{item.customerID}, Name:{item.fullname},{"\n"}Reserve#:{item.reservID},{"\n"}Type:{item.room_type}</Text>
+        </View>
+        <Image style= {styles.thumbnail}source={rooms[e]}/>
+        </View>
+    </TouchableOpacity>
      );}
 
         render() {
