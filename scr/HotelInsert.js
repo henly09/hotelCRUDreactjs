@@ -4,9 +4,6 @@ import bg from '../assets/bg.jpg';
 import ModalDropdown from 'react-native-modal-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-// Ownded and Created by : Montera, John Henly A.
-// FB: fb.com/mhax.ter
-// Gmail: monterahens@gmail.com 
 
 export default function HotelInsert()
 {

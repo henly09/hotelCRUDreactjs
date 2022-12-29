@@ -1,7 +1,4 @@
-// In App.js in a new project
-// Ownded and Created by : Montera, John Henly A.
-// FB: fb.com/mhax.ter
-// Gmail: monterahens@gmail.com 
+
 
 import * as React from 'react';
 import { View,Text, TouchableNativeFeedback, Image, ImageBackground,StyleSheet,SafeAreaView } from 'react-native';

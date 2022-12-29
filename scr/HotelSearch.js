@@ -11,9 +11,7 @@ import {
 } from 'react-native';
 import hotel from '../assets/hotel.png';
 import bg from '../assets/bg.jpg';
-// Ownded and Created by : Montera, John Henly A.
-// FB: fb.com/mhax.ter
-// Gmail: monterahens@gmail.com 
+
 export default class HotelSearch extends Component {
 
     constructor(props)

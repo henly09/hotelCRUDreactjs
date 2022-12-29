@@ -20,9 +20,7 @@ import queen from '../assets/thumbnail/queen.png';
 import king from '../assets/thumbnail/king.png';
 import twin from '../assets/thumbnail/twin.png';
 import hotel from '../assets/hotel.png';
-// Ownded and Created by : Montera, John Henly A.
-// FB: fb.com/mhax.ter
-// Gmail: monterahens@gmail.com 
+
 export default class HotelDelete extends Component {
 
     constructor(props)

@@ -1,7 +1,4 @@
-// In App.js in a new project
-// Ownded and Created by : Montera, John Henly A.
-// FB: fb.com/mhax.ter
-// Gmail: monterahens@gmail.com 
+
 import * as React from 'react';
 import { useState } from 'react';
 import { View, Text, Image, ImageBackground,TouchableOpacity, StyleSheet, TextInput, ToastAndroid, Button } from 'react-native';
@@ -137,7 +134,7 @@ function SideMenuBar(){
       textShadowRadius:15,
       textAlign: 'center',
     }}>
-      MONTERA™ SYSTEM{'\n'}SOLUTIONS
+      Companies Name™ SYSTEM{'\n'}SOLUTIONS
     </Text>
 </View>
      </ImageBackground>

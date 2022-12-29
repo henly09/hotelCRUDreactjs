@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import bg from '../assets/bg.jpg';
 import { Image,StyleSheet, FlatList, Text, View, ActivityIndicator, TouchableOpacity, ImageBackground} from 'react-native';
 import hotel from '../assets/hotel.png';
-// Ownded and Created by : Montera, John Henly A.
-// FB: fb.com/mhax.ter
-// Gmail: monterahens@gmail.com 
 
 import single from '../assets/thumbnail/single.png';
 import double from '../assets/thumbnail/double.png';

@@ -6,10 +6,6 @@ import { View,
   SafeAreaView, 
   ImageBackground,
 } from 'react-native';
-// In App.js in a new project
-// Ownded and Created by : Montera, John Henly A.
-// FB: fb.com/mhax.ter
-// Gmail: monterahens@gmail.com 
 
 import queen from '../assets/hotelroom/queen.jpg';
 import bg from '../assets/bg.jpg';
